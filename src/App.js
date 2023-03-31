@@ -1,19 +1,18 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import MainRoom from './MainRoom/MainRoom'
+import Main from './MainRoom/Main'
 import ChatRoom from './ChatRoom/ChatRoom'
 
 function App() {
+
   return (
-    <>
       <Router>
         <Routes>
-          <Route path='/' Component={MainRoom} />
-          <Route path='/chat' Component={ChatRoom} />
-          <Route render={() => (alert("omg"))} />
+          <Route path='/' element={<Main />} />
+          <Route path='/EnterRoom' element={<ChatRoom />} />
+          <Route render={() => (alert("이게 뭐임?"))} />
         </Routes>
       </Router>
-    </>
   );
 }
 

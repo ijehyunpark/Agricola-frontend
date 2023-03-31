@@ -4,6 +4,6 @@ module.exports = function (app) {
     createProxyMiddleware("/rooms", {
       target:"http://127.0.0.1:8080",
       changeOrigin: true,
-    })
-  );
+    }),
+  )
 };
