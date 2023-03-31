@@ -1,0 +1,474 @@
+/* ChatRoom */
+#ChatRoom{
+    position: relative;
+    width: 1920px;
+    height: 1090px;
+}
+
+
+
+/* ChatRoomFrame */
+#ChatRoomFrame{
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+
+    position: absolute;
+    width: 1865px;
+    height: 1005px;
+    left: calc(50% - 1865px/2 + 27.5px);
+    top: calc(50% - 1005px/2 - 21.5px);
+
+    background: rgba(243, 246, 248, 0.95);
+    border-radius: 50px;
+}
+
+
+
+/* LeftFrame */
+#LeftFrame{
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 20px;
+
+    width: 1407px;
+    height: 885px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+
+
+/* RoomContainer */
+#RoomContainer{
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 10px;
+    gap: 20px;
+
+    width: 1387px;
+    height: 77px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* BackButton */
+#BackButton{
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 80px;
+    gap: 10px;
+
+    width: 118px;
+    height: 59px;
+
+    background: #1A8FDD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+/* BackText */
+#BackText{
+    width: 78px;
+    height: 39px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    
+    color: #FFFFFF;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+/* RoomNameContainer */
+#RoomNameContainer{
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 15px;
+    gap: 10px;
+
+    width: 1229px;
+    height: 77px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+
+
+/* GameRoomName */
+#GameRoomName{
+    width: 218px;
+    height: 77px;
+    
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 77px;
+    
+    color: #000000;
+    font-variation-settings: 'slnt' -10;
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+/* ChatFrame */
+#ChatFrame{
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    
+    width: 1300px;
+    height: 768px;
+    overflow-y: scroll;
+    
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+
+/* ChatList */
+#ChatList{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 20px;
+    
+    width: 1300px;
+    height: 678px;
+    overflow-y: scroll;
+    
+    background: #FFFFFF;
+    border-radius: 5px 5px 0px 0px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+
+
+/* Chatting */
+#Chatting{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    gap: 10px;
+    
+    width: 1200px;
+    height: 70px;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+/* UserChatting */
+#UserChatting{
+    width: 1120px;
+    height: 70px;
+    
+    background: #EFEFEF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+
+
+/* UserProfile */
+#UserProfile{
+    width: 70px;
+    height: 70px;
+    
+    background: #F3F6F8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+
+/* ChatContainer */
+#ChatContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    
+    width: 1300px;
+    height: 90px;
+    
+    background: #D9D9D9;
+    border-radius: 0px 0px 5px 5px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+
+/* ChatContent */
+#ChatContent{
+    width: 1122px;
+    height: 64px;
+    
+    background: #FFFFFF;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 50px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+
+
+/* ChatButton */
+#SendButton{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-right: 50px;
+
+    width: 128px;
+    height: 63px;
+
+    background: #1A8FDD;
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+
+/* SendText */
+#SendText{
+    width: 82px;
+    height: 39px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 39px;
+
+    /* identical to box height */
+    
+    color: #FFFFFF;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+/* RightFrame */
+#RightFrame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    gap: 20px;
+    
+    width: 338px;
+    height: 885px;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+
+
+/* GameStartButton */
+#GameStartButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    
+    width: 318px;
+    height: 77px;
+    
+    background: #1A8FDD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+
+
+/* GameStartText */
+#GameStartText{
+    width: 226px;
+    height: 41px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 41px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+/* GameController */
+#GameController{
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+
+    width: 318px;
+    height: 316px;
+
+    background: #757575;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+
+
+/* hello world! */
+#hello-world{
+    width: 198px;
+    height: 41px;
+    
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 41px;
+    
+    color: #FFFFFF;
+    font-variation-settings: 'slnt' -10;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
