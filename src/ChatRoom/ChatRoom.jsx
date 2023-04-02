@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import './ChatRoom.css'
 import * as StompJS from '@stomp/stompjs';
 
-function ChatRoom({username, setMainPage, setUsername}) {
+function ChatRoom({username, setMainPage, setUsername, roomNumber}) {
 
     const client = useRef(null);
     const [messages, setMessages] = useState([]);
@@ -33,20 +33,27 @@ function ChatRoom({username, setMainPage, setUsername}) {
         }
 
         client.current.publish({
-            destination: '/pub/greetings/0',
+            destination: '/pub/greetings/' + roomNumber,
             body: username
         })
 
-        client.current.subscribe('/sub/channel/0', (message) => {
-            let messageId = JSON.parse(message.body).id;
-            let sender = JSON.parse(message.body).sender.username;
-            let type = JSON.parse(message.body).type;
-            let content = JSON.parse(message.body).content;
-
+        client.current.subscribe('/sub/channel/' + roomNumber, (message) => {
+            const messageId = JSON.parse(message.body).id;
+            const type = JSON.parse(message.body).type;
+            let content = "";
+            
             if(type === "GREETING")
                 content = "입장";
             else if (type === "LEAVE")
                 content = "퇴장";
+            else if (type === "DENIED"){
+                setUsername("");
+                setMainPage(true);
+                return;
+            } else{
+                content = JSON.parse(message.body).content;
+            }
+            const sender = JSON.parse(message.body).sender;
                 
             if (lastMessage === null || lastMessage !== messageId){
                 setLastMessage(messageId);
@@ -55,15 +62,6 @@ function ChatRoom({username, setMainPage, setUsername}) {
         }, { ack: 'client.individualAck' });
     };
 
-    const bye = () => {
-        if (!client.current.connected){
-            console.log("연결 실패");
-        }
-
-        client.current.publish({
-            destination: '/pub/exit/0'
-        })
-    };
 
     useEffect(() => {
         console.log(messages)
@@ -75,16 +73,15 @@ function ChatRoom({username, setMainPage, setUsername}) {
         }
     
         client.current.publish({
-            destination: '/pub/send/0',
+            destination: '/pub/send',
             body: message
         })
     }
 
     const backconnect = () => {
-        bye();
+        client.current.deactivate();
         setMainPage(true);
         setUsername("");
-        client.current.deactivate();
     }
 
     const Chatting = (idx, username, chat) => {

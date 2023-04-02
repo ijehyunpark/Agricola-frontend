@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Modal from './Modal';
 
-function MainRoom({setMainPage, username, setUsername}) {
+function MainRoom({setMainPage, username, setUsername, setRoomNumber}) {
 
     const [roomList, setRoomList] = useState([]); // 현재 존재하는 gameRoom 리스트
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,14 +62,14 @@ function MainRoom({setMainPage, username, setUsername}) {
         setIsModalOpenCR(false);
     };
 
-    const Room = (idx, name, capacity) => {
+    const Room = (idx, name, capacity, participantNumber) => {
         // name, capacity로 이루어진 Romm DOM 객체를 생성합니다.
         return (
             <div>
-                <div key={"Room" + idx} id={'Room'} onClick={() => setIsModalOpen(true)}>
+                <div key={"Room" + idx} id={'Room'} onClick={() => {setIsModalOpen(true); setRoomNumber(idx);}}>
                         <p id={'RoomName'}>{name}</p>
                         <div id={'CapacityContainer'}>
-                            <p id={'Capacity'}>{capacity}</p>
+                            <p id={'Capacity'}>{participantNumber + "/" + capacity}</p>
                         </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@ function MainRoom({setMainPage, username, setUsername}) {
                 </div>
 
                 <div id={`RoomList`}>
-                    {roomList.map((comp) => (Room(comp['id'], comp['name'], comp['capacity'])))}
+                    {roomList.map((comp) => (Room(comp['id'], comp['name'], comp['capacity'], comp['participantNumber'])))}
                 </div>
             </div>
         </div>
