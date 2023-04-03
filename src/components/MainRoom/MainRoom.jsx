@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './MainRoom.css'
 import axios from 'axios';
 
-import Modal from './Modal';
+import Modal from '../Utils/Modal';
 
 function MainRoom({setMainPage, username, setUsername, setRoomNumber}) {
 
