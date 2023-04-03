@@ -77,7 +77,7 @@ function ChatRoom({username, setConnect, roomNumber}) {
         })
     }
 
-    const backconnect = () => {
+    const disconnect = () => {
         client.current.deactivate();
         setConnect(false);
     }
@@ -102,7 +102,7 @@ function ChatRoom({username, setConnect, roomNumber}) {
                 <div id={`LeftFrame`}>
                     <div id={`RoomContainer`}>
                         <div id={`BackButton`}>
-                            <p id={`BackText`} onClick={() => backconnect()}>Back</p>
+                            <p id={`BackText`} onClick={() => disconnect()}>Back</p>
                         </div>
                         <div id={`RoomNameContainer`}>
                             <p id={`GameRoomName`}>Rooms</p>
