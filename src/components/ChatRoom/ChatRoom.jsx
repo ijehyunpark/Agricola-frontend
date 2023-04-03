@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import './ChatRoom.css'
 import * as StompJS from '@stomp/stompjs';
 
-function ChatRoom({username, setMainPage, setUsername, roomNumber}) {
+function ChatRoom({username, setConnect, roomNumber}) {
 
     const client = useRef(null);
     const [messages, setMessages] = useState([]);
@@ -47,8 +47,7 @@ function ChatRoom({username, setMainPage, setUsername, roomNumber}) {
             else if (type === "LEAVE")
                 content = "퇴장";
             else if (type === "DENIED"){
-                setUsername("");
-                setMainPage(true);
+                setConnect(false);
                 return;
             } else{
                 content = JSON.parse(message.body).content;
@@ -80,8 +79,7 @@ function ChatRoom({username, setMainPage, setUsername, roomNumber}) {
 
     const backconnect = () => {
         client.current.deactivate();
-        setMainPage(true);
-        setUsername("");
+        setConnect(false);
     }
 
     const Chatting = (idx, username, chat) => {

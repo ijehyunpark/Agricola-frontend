@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Modal from '../Utils/Modal';
 
-function MainRoom({setMainPage, username, setUsername, setRoomNumber}) {
+function MainRoom({setConnect, setUsername, setRoomNumber}) {
 
     const [roomList, setRoomList] = useState([]); // 현재 존재하는 gameRoom 리스트
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,13 +14,6 @@ function MainRoom({setMainPage, username, setUsername, setRoomNumber}) {
         // 페이지가 로드될 때 한번 현재 gameRoom 리스트를 받습니다.
         getRoomList();
       },[]);
-
-    useEffect(() =>{
-        if(username){
-            setMainPage(false);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [username])
 
     const createRoomRequest = async(roomName) => {
         // 새로운 gameRoom 생성 요청을 보냅니다.
@@ -53,6 +46,7 @@ function MainRoom({setMainPage, username, setUsername, setRoomNumber}) {
         // 사용할 게스트 이름을 입력 받는다.
         e.preventDefault();
         setUsername(document.getElementById('username').value);
+        setConnect(true);
     };
 
     const handleSubmitCR = (e) => {
