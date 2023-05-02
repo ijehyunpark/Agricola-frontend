@@ -9,6 +9,7 @@ import './App.css';
 
 import Main from './layout/Main';
 import GameScreen from './components/GameScreen';
+import RoomList from './components/RoomList';
 import SampleComponent from './components/SampleComponent';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       <GlobalStyle />
       <Provider store={store}>
         <ThemeProvider theme={defaultTheme}>
-          <GameScreen />
+          <RoomList />
           {/* <SampleComponent /> */}
         </ThemeProvider>
       </Provider>
