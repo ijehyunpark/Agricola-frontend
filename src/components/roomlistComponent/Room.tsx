@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RoomJoin from './RoomJoin';
 import styled from 'styled-components';
 
 
@@ -46,12 +47,13 @@ type Roomprops = {
   roomTitle:string;
   player:number;
   timeset:number;
+  onClick: () => void;
 }
-function Room({ roomTitle, player, timeset} : Roomprops ){
+function Room({ roomTitle, player, timeset, onClick } : Roomprops){
   return(
     <>
       <Info>
-        <Roominfo>
+        <Roominfo onClick={onClick}>
           <Roomtitle>
             {roomTitle}
           </Roomtitle>
