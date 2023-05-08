@@ -12,39 +12,42 @@ declare module 'styled-components' {
   //export type // 타입~~~지정지정해~
 
   // ThemeProvider theme에 적용할 타입으로, theme의 속성과 동일하게 작성
+
+  type fontSize = {
+    xs: string;
+    sm: string;
+    base: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
+
+  type paddings = {
+    xs: string;
+    sm: string;
+    base: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+    xxxl: string;
+  };
+
+  type colors = {
+    textPrimary: string;
+    textSecondary: string;
+    darkGray: string;
+    bgPrimary: string;
+    bgSecondary: string;
+    tileNameBg: string;
+    tileNameBorder: string;
+    tileBg: string;
+    border: string;
+  };
+
   export interface DefaultTheme {
-    default: {
-      mainBackground: string;
-      // neutral color
-      title: string;
-      primaryText: string;
-      secondaryText: string;
-      disable: string;
-      border: string;
-      divider: string;
-      background: string;
-      tableHeader: string;
-      // point-color
-    };
-
-    response: {};
-  }
-
-  export interface LightTheme {
-    light: {
-      mainBackground: string;
-      // neutral color
-      title: string;
-      primaryText: string;
-      secondaryText: string;
-      disable: string;
-      border: string;
-      divider: string;
-      background: string;
-      tableHeader: string;
-
-      // point-color
-    };
+    fontSize: fonstSize;
+    paddings: paddings;
+    colors: colors;
     response: {};
   }
 }
