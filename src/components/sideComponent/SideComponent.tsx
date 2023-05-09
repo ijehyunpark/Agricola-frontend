@@ -11,13 +11,21 @@ export const StatusColumn = styled.div`
   padding: 10px;
 `;
 
+export const SideTop = styled.div`
+  width: 100%;
+  padding: 5px;
+  /* height: 10%; */
+  background-color: ${(props) => props.theme.colors.tileBg};
+  border: 1px solid black;
+`;
+
 export const StatusFrame = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   padding: 5px;
-  height: 20%;
+  /* height: 22%; */
   border: 1px solid black;
   border-radius: 3px;
   background-color: ${(props) => props.theme.colors.tileBg};
@@ -30,17 +38,22 @@ export const StatusHeader = styled.div`
 `;
 
 export const playerSequence = styled.span`
+  width: 10px;
+  height: 10px;
   padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: ${(props) => props.theme.colors.darkGray};
   font-size: ${(props) => props.theme.fontSize.sm};
 `;
 
 export const PlayerName = styled.span`
   padding: 5px;
-  font-size: ${(props) => props.theme.fontSize.sm};
+  font-size: ${(props) => props.theme.fontSize.md};
 `;
 export const PlayerImg = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 42x;
+  height: 42px;
   border-radius: 100%;
 `;
 
@@ -48,7 +61,7 @@ export const StatusContent = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   /* grid-template-rows: repeat(2, 280px); */
-  grid-gap: 5px;
+  grid-gap: 7px;
   place-items: center;
 `;
 
@@ -58,19 +71,39 @@ const ResourceWrapper = styled.div`
   align-items: center;
 `;
 
-const ContentIcon = styled.img`
-  width: 18px;
-  height: 18px;
+export const ContentIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+export const ContentIconLg = styled.img`
+  width: 32px;
+  height: 32px;
 `;
 
 const ContentCount = styled.span`
-  font-size: ${(props) => props.theme.fontSize.sm};
+  font-size: ${(props) => props.theme.fontSize.base};
+  padding-left: 5px;
 `;
 
 type StatusResourceProps = {
   resourceSrc: string;
   resourceCount: number;
   resourceMaximumCount?: number;
+};
+
+type Profile = {
+  nickname: string;
+  imgSrc: string;
+};
+
+export const PlayerProfile = ({ nickname, imgSrc }: Profile) => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <PlayerImg src={imgSrc} />
+      <PlayerName>{nickname}</PlayerName>
+    </div>
+  );
 };
 
 export const StatusResource = ({ resourceSrc, resourceCount }: StatusResourceProps) => {
@@ -92,10 +125,3 @@ export const StatusResourceLimited = ({ resourceSrc, resourceCount, resourceMaxi
     </ResourceWrapper>
   );
 };
-
-export const SideTop = styled.div`
-  width: 100%;
-  padding: 5px;
-  height: 10%;
-  border: 1px solid black;
-`;
