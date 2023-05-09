@@ -1,35 +1,39 @@
-import styled, { css, DefaultTheme, LightTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
-export const defaultTheme: DefaultTheme = {
-  default: {
-    mainBackground: `#333`,
-    // neutral color
-    title: `rgba(255,255,255,0.85)`,
-    primaryText: `rgba(255,255,255,0.65)`,
-    secondaryText: `rgba(255,255,255,0.45)`,
-    disable: `rgba(255,255,255,0.25)`,
-    border: `rgba(255,255,255,0.15)`,
-    divider: `rgba(255,255,255,0.06)`,
-    background: `rgba(255,255,255,0.04)`,
-    tableHeader: `rgba(255,255,255,0.02)`,
-    // point-color
-  },
-  response: {},
+const fontSize = {
+  xs: '0.5rem',
+  sm: '0.75rem',
+  base: '1rem',
+  md: '1.25rem',
+  lg: '1.5rem',
+  xl: '2.0rem',
 };
 
-export const lightTheme: LightTheme = {
-  light: {
-    mainBackground: `#fff`,
-    // neutral color
-    title: `rgba(0, 0, 0, 0.85)`,
-    primaryText: `rgba(0, 0, 0, 0.75)`,
-    secondaryText: `rgba(0, 0, 0, 0.45)`,
-    disable: `rgba(0, 0, 0, 0.25)`,
-    border: `rgba(0, 0, 0, 0.15)`,
-    divider: `rgba(0, 0, 0, 0.06)`,
-    background: `rgba(0, 0, 0, 0.04)`,
-    tableHeader: `rgba(0, 0, 0, 0.02)`,
-    // point-color
-  },
+const paddings = {
+  xs: '0.25rem',
+  sm: '0.5rem',
+  base: '0.75rem',
+  lg: '1.0rem',
+  xl: '1.5rem',
+  xxl: '2.0rem',
+  xxxl: '3.0rem',
+};
+
+const colors = {
+  textPrimary: `#000`,
+  textSecondary: `rgb(120, 120, 120)`, //787878
+  darkGray: `rgb(170, 170, 170)`, //AAAAA
+  bgPrimary: `rgb(238, 238, 238)`, //EEEEE
+  bgSecondary: `rgb(217, 217, 217)`, //D9D9D9
+  tileNameBg: `rgb(247, 245, 225)`,
+  tileNameBorder: `rgb(189, 159, 98)`,
+  tileBg: `rgb(234, 230, 159)`,
+  border: `rgb(255,255,255)`,
+};
+
+export const defaultTheme: DefaultTheme = {
+  fontSize,
+  paddings,
+  colors,
   response: {},
 };
