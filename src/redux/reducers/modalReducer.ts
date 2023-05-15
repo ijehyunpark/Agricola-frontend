@@ -7,7 +7,7 @@ export interface ModalState {
   gameStatusModal: boolean;
   resourceExchangeModal: boolean;
   foodSelectionModal: boolean;
-  finalScoreBoardModal: boolean;
+  finalScoreModal: boolean;
 }
 
 interface ModalAction {
@@ -22,7 +22,7 @@ const initialState: ModalState = {
   gameStatusModal: false,
   resourceExchangeModal: false,
   foodSelectionModal: false,
-  finalScoreBoardModal: false,
+  finalScoreModal: false,
 };
 
 export const modalSlice = createSlice({

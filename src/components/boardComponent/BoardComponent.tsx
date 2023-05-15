@@ -45,6 +45,15 @@ export const FullTile = styled.div`
   position: relative;
 `;
 
+export const FlipTile = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+`;
+
 export const TileName = styled.h3`
   width: fit-content;
   padding: ${(props) => props.theme.paddings.xs} ${(props) => props.theme.paddings.base};
@@ -63,6 +72,15 @@ export const TileContentWrapper = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.colors.tileBg};
   border-radius: 7px;
+`;
+
+export const TileBack = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 7px;
+  font-size: ${(props) => props.theme.fontSize.lg};
 `;
 
 export const ResourceText = styled.span`

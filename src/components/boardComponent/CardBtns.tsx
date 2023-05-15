@@ -20,6 +20,7 @@ function CardBtns() {
       <B.CardBtn onClick={() => dispatch(openModal('majorCardModal'))}>주요 설비</B.CardBtn>
       <B.CardBtn onClick={() => dispatch(openModal('subCardModal'))}>보조 설비</B.CardBtn>
       <B.CardBtn onClick={() => dispatch(openModal('jobCardModal'))}>직업 카드</B.CardBtn>
+      <B.CardBtn onClick={() => dispatch(openModal('finalScoreModal'))}>점수판</B.CardBtn>
     </BtnAlingColumn>
   );
 }
