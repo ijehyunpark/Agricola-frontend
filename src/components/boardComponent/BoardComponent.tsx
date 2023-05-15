@@ -73,6 +73,7 @@ export const ResourceText = styled.span`
 export const Icon = styled.img`
   width: 24px;
   height: 24px;
+  padding: 3px;
   text-align: center;
 `;
 

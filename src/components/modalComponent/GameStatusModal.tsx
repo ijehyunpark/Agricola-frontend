@@ -5,20 +5,20 @@ function GameStatusModal() {
   return (
     <M.Modal modalType='gameStatusModal'>
       <M.GameStatusModalFrame>
-        <M.AlignRow>
+        <M.AlignRow justify={'center'} style={{ marginTop: '60px' }}>
           <M.AlignColumn>
-            <M.AlignRow>
+            <M.AlignRow justify={'center'}>
               <M.AlignColumn>
                 <M.scoreText top={0} left={0}>
                   -1
                 </M.scoreText>
-                <M.AlignColumn>
+                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.452)'}>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/farm.svg' />
                     <M.CountText>0~1</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/fenceTile.svg' />
                     <M.CountText>0</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -47,13 +47,13 @@ function GameStatusModal() {
                 <M.scoreText top={0} left={0}>
                   +1
                 </M.scoreText>
-                <M.AlignColumn>
+                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.452)'}>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/farm.svg' />
                     <M.CountText>2</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/fenceTile.svg' />
                     <M.CountText>1</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -82,13 +82,13 @@ function GameStatusModal() {
                 <M.scoreText top={0} left={0}>
                   +2
                 </M.scoreText>
-                <M.AlignColumn>
+                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.452)'}>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/farm.svg' />
                     <M.CountText>3</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/fenceTile.svg' />
                     <M.CountText>2</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -117,13 +117,13 @@ function GameStatusModal() {
                 <M.scoreText top={0} left={0}>
                   +3
                 </M.scoreText>
-                <M.AlignColumn>
+                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.452)'}>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/farm.svg' />
                     <M.CountText>4</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/fenceTile.svg' />
                     <M.CountText>3</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -152,13 +152,13 @@ function GameStatusModal() {
                 <M.scoreText top={0} left={0}>
                   +4
                 </M.scoreText>
-                <M.AlignColumn>
+                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.5)'}>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/farm.svg' />
                     <M.CountText>5+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/wood.svg' />
+                    <M.Icons src='img/tile/fenceTile.svg' />
                     <M.CountText>4+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -184,38 +184,30 @@ function GameStatusModal() {
                 </M.AlignColumn>
               </M.AlignColumn>
             </M.AlignRow>
-            <M.AlignRow>
-              <M.IconBox width={'54px'} height={'54px'}>
-                <M.scoreText top={'9px'} left={'40px'}>
-                  -1
-                </M.scoreText>
+            <M.AlignRow justify={'center'}>
+              <M.IconBox width={'48px'} height={'48px'} src={'img/tile/emptyTile.svg'} />
+              <M.IconBox width={'48px'} height={'48px'} src={'img/tile/fenceWithBarnTile.svg'} />
+              <M.IconBox width={'48px'} height={'48px'}>
+                흙집
               </M.IconBox>
-              <M.IconBox width={'54px'} height={'54px'}>
-                <M.scoreText top={'9px'} left={'40px'}>
-                  +1
-                </M.scoreText>
+              <M.IconBox width={'48px'} height={'48px'}>
+                돌집
               </M.IconBox>
-              <M.IconBox width={'54px'} height={'54px'}>
-                <M.scoreText top={'9px'} left={'40px'}>
-                  +1
-                </M.scoreText>
+
+              <M.IconBox width={'48px'} height={'48px'} src={'img/etc/familyScore.svg'} />
+              <M.IconBox width={'48px'} height={'48px'}>
+                카드점수
               </M.IconBox>
-              <M.IconBox width={'54px'} height={'54px'}>
-                <M.scoreText top={'9px'} left={'40px'}>
-                  +2
-                </M.scoreText>
-              </M.IconBox>
-              <M.AlignColumn>
-                <M.IconBox width={'54px'} height={'20px'}>
-                  <M.scoreText top={'-6px'} left={'40px'}>
-                    +2
-                  </M.scoreText>
-                </M.IconBox>
-                <M.IconBox width={'54px'} height={'20px'}></M.IconBox>
-              </M.AlignColumn>
             </M.AlignRow>
           </M.AlignColumn>
-          <div style={{ width: '500px', height: '300px', border: '1px solid red' }}>123123</div>
+          <M.AlignColumn>
+            <M.AlignRow justify={'space-around'}>
+              <M.IconBox width={'54px'} height={'54px'} src={'img/etc/profile.svg'} />
+              <M.IconBox width={'54px'} height={'54px'} src={'img/etc/profile.svg'} />
+              <M.IconBox width={'54px'} height={'54px'} src={'img/etc/profile.svg'} />
+            </M.AlignRow>
+            <div style={{ width: '535px', height: '320px', border: '1px solid red' }}>123123</div>
+          </M.AlignColumn>
         </M.AlignRow>
       </M.GameStatusModalFrame>
     </M.Modal>
