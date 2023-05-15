@@ -1,12 +1,20 @@
 import React from 'react';
 import * as S from './SideComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal, closeModal } from '../../redux/reducers/modalReducer';
 
 function PlayerStatus() {
+  const dispatch = useDispatch();
   return (
     <S.StatusColumn>
       <S.SideTop>
-        <S.ContentIconLg src='img/etc/timer.svg' />
-        <span>00:00</span>
+        <S.TimerFrame>
+          <S.ContentIconLg src='img/etc/timer.svg' />
+          <S.TimerText>00:00</S.TimerText>
+        </S.TimerFrame>
+        {/* <S.ContentIconLg src='img/etc/scoreBoard.svg' role='button'  /> */}
+        <S.ScoreBoardBtn onClick={() => dispatch(openModal('gameStatusModal'))} />
+        {/* <button style={{width: '32px', height:'32px' bopr}}/> */}
       </S.SideTop>
       <S.StatusFrame>
         <S.StatusHeader>

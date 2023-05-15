@@ -12,11 +12,27 @@ export const StatusColumn = styled.div`
 `;
 
 export const SideTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
   padding: 5px;
+
   /* height: 10%; */
   background-color: ${(props) => props.theme.colors.tileBg};
   border: 1px solid black;
+  border-radius: 3px;
+`;
+
+export const TimerText = styled.span`
+  font-size: ${(props) => props.theme.fontSize.lg};
+  padding-left: ${(props) => props.theme.paddings.sm};
+`;
+
+export const TimerFrame = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StatusFrame = styled.div`
@@ -52,8 +68,8 @@ export const PlayerName = styled.span`
   font-size: ${(props) => props.theme.fontSize.md};
 `;
 export const PlayerImg = styled.img`
-  width: 42x;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 100%;
 `;
 
@@ -79,6 +95,17 @@ export const ContentIcon = styled.img`
 export const ContentIconLg = styled.img`
   width: 32px;
   height: 32px;
+`;
+
+
+export const ScoreBoardBtn = styled.button`
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-image: url('img/etc/scoreBoard.svg');
+  background-position: center;
+  background-size: cover;
+  background-color: ${(props) => props.theme.colors.tileBg};
 `;
 
 
