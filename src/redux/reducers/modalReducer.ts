@@ -30,6 +30,7 @@ export const modalSlice = createSlice({
   initialState,
   reducers: {
     openModal(state: ModalState, action: ModalAction) {
+      console.log(action.payload);
       state[action.payload] = true;
     },
     closeModal(state: ModalState, action: ModalAction) {

@@ -2,7 +2,6 @@ import React, { useState, Dispatch, SetStateAction } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeModal } from '../../redux/reducers/modalReducer';
 import * as B from '../boardComponent/BoardComponent';
-import * as M from '../modalComponent/ModalComponent';
 import styled from 'styled-components';
 
 const BtnAlingColumn = styled.div`
