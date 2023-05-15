@@ -97,6 +97,7 @@ export const ContentIconLg = styled.img`
   height: 32px;
 `;
 
+
 export const ScoreBoardBtn = styled.button`
   width: 32px;
   height: 32px;
@@ -106,6 +107,7 @@ export const ScoreBoardBtn = styled.button`
   background-size: cover;
   background-color: ${(props) => props.theme.colors.tileBg};
 `;
+
 
 const ContentCount = styled.span`
   font-size: ${(props) => props.theme.fontSize.base};

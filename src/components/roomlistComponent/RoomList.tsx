@@ -13,10 +13,11 @@ export const Background = styled.div`
 `;
 export const MainHeader = styled.div`
   height: 100px;
-  display: grid;
   background-color: red;
 `;
 export const MainTitle = styled.h1`
+  margin: 0;
+  height: 50px;
   text-align: center;
   font-size: 50pt;
 `;
