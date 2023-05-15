@@ -7,7 +7,7 @@ export const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background-color: white;
+  background-color: #EEEEEE;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 0px;
@@ -30,13 +30,13 @@ export const ModalContent = styled.div`
 
 `
 export const Head = styled.div`
-  display: flex;
-  height: 3vh;
-  padding: 10px;
-  background-color: #EEEEEE;
-  p{
-    width: 95%;
-    font-size: 20pt;
+display: flex;
+height: 45px;;
+background-color: #AAAAAA;
+  h2{
+    padding: 5px;
+    margin: 0;
+    width: 100%;
   }
 `
 export const Close = styled.button`
@@ -52,22 +52,15 @@ const RoomJoin = ({ onClose }: {onClose: () => void}) => {
     <Modal>
       <ModalContent>
         <Head>
-          <p>방 입장 (방만들기 복붙했습니다.)</p>
+          <h2>방 입장</h2>
           <Close onClick={onClose}>Close</Close>
         </Head>
         <MainContent>
-          <p >방 이름</p>
-          <input type="text" placeholder="방 이름을 입력해주세요"></input>
-          <p>행동 선택 가능시간</p>
-          <select name="time">
-            <option value="">골라</option>
-            <option value="30초">30초</option>
-            <option value="60초">60초</option>
-            <option value="90초">90초</option>
-            <option value="120초">120초</option>
-          </select>
+          <p>방 이름 : {}</p>
+          <p>행동 선택 가능시간 : {}</p>
+          <p>닉네임</p>
           <input type="text" placeholder="닉네임을 입력해주세요"></input>
-          <button className="방만들기">방 만들기</button>
+          <button className="joinroom">입장하기</button>
         </MainContent> 
       </ModalContent>
     </Modal>
