@@ -81,6 +81,7 @@ export const ContentIconLg = styled.img`
   height: 32px;
 `;
 
+
 const ContentCount = styled.span`
   font-size: ${(props) => props.theme.fontSize.base};
   padding-left: 5px;

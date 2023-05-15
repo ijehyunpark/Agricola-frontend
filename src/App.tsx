@@ -9,24 +9,19 @@ import '/node_modules/react-grid-layout/css/styles.css';
 import '/node_modules/react-resizable/css/styles.css';
 import './App.css';
 
-
-//import Main from './layout/Main';
-//import GameScreen from './components/gameScreen/GameScreen';
+import GameScreen from './components/gameScreen/GameScreen';
 import RoomList from './components/roomlistComponent/RoomList';
-//import SampleComponent from './components/SampleComponent';
 
 function App() {
   return (
     <>
-    <RoomList />
-      {/*<GlobalStyle />*/}
-      {/*<Provider store={store}>
+      <GlobalStyle />
+      <Provider store={store}>
         <ThemeProvider theme={defaultTheme}>
-          <RoomList></RoomList>
-           <SampleComponent /> */}
-        {/*<GameScreen />
+          {/* <RoomList></RoomList> */}
+          <GameScreen />
         </ThemeProvider>
-      </Provider>*/}
+      </Provider>
     </>
   );
 }

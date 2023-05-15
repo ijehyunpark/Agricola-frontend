@@ -7,6 +7,7 @@ import { gridXLg, gridLg } from './Grid';
 import { InitialResourceTile, RoundResourceTile } from '../boardComponent/ResourceTile';
 import { InitialActionTile, RoundActionTile } from '../boardComponent/ActionTile';
 import CardBtns from '../boardComponent/CardBtns';
+import StartBtns from '../boardComponent/Startbtns';
 import PlayerStatus from '../sideComponent/PlayerStatus';
 
 import ModalController from '../modalComponent/ModalController';
@@ -23,6 +24,8 @@ function GameScreen() {
   //   margin: marginTuple,
   // };
 
+
+
   const GridLayoutProps = {
     cols: 11,
     rowHeight: 72,
@@ -38,6 +41,7 @@ function GameScreen() {
   return (
     <B.Background>
       <B.BoardFrame>
+      <StartBtns></StartBtns>
         <GridLayout className='layout' layout={gridLg} {...GridLayoutProps}>
           {/* row1 */}
           <B.TileFrame key='bush_forest'>
