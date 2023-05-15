@@ -74,7 +74,7 @@ function GameScreen() {
           </B.TileFrame>
           <B.TileFrame key='seed_farm'>
             <InitialResourceTile resourceName={'곡식종자'} resourceType={'resource/cropSeed'} numOfResource={1} />
-            <InitialActionTile actionName={'농지'} actionType={'farm'} />
+            <InitialActionTile actionName={'농지'} actionType={'tile/farm'} />
           </B.TileFrame>
           <B.TileFrame key='forest2_soil'>
             <InitialResourceTile resourceName={'숲'} resourceType={'resource/wood'} numOfResource={3} />
