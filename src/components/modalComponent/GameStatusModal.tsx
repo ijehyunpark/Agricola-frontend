@@ -12,7 +12,7 @@ function GameStatusModal() {
                 <M.scoreText top={0} left={0}>
                   -1
                 </M.scoreText>
-                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.452)'}>
+                <M.AlignColumn backgroundColor={'rgba(255, 255, 255, 0.5)'}>
                   <M.ColummItem>
                     <M.Icons src='img/tile/farm.svg' />
                     <M.CountText>0~1</M.CountText>

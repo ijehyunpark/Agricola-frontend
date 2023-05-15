@@ -36,20 +36,61 @@ export const CardModalGrid = styled.div<{ n: number }>`
   display: grid;
   padding: 60px;
   width: 1200px;
-  /* height: 650px; */
-
   grid-template-columns: repeat(${(props) => props.n}, 1fr);
   grid-template-rows: repeat(2, 280px);
   grid-gap: 10px;
   place-items: center;
-  /* background-color: white; */
   background-image: url('img/etc/cardTable.svg');
   background-position: center;
   background-size: cover;
   border-radius: 5px;
-  /* & > :nth-child(6) {
-    grid-column: 2 / span 2;
-  } */
+`;
+
+export const FinalScoreModalFrame = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; */
+  /* width: 1280px;
+  height: 680px; */
+  padding: 30px;
+  background-color: ${(props) => props.theme.colors.tileBg};
+
+  border-radius: 5px;
+  /* background-image: url('img/etc/woodBoard_rope.svg');
+  background-position: center;
+  background-size: cover; */
+`;
+
+export const FinalScoreGrid = styled.div`
+  display: grid;
+
+  grid-template-columns: repeat(17, 1fr);
+  /* grid-template-rows: repeat(5, 280px); */
+  /* grid-gap: 1px; */
+  place-items: center;
+  /* background-image: url('img/etc/cardTable.svg');
+  background-position: center;
+  background-size: cover; */
+`;
+
+interface GridTileProps {
+  w?: string | undefined;
+  h?: string | undefined;
+  borderR?: string | undefined;
+  borderB?: string | undefined;
+}
+
+export const GridTile = styled.div<GridTileProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${(props) => props.w || '42px'};
+  height: ${(props) => props.h || '42px'};
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-right: ${(props) => props.borderR || '1px dashed black'};
+  border-bottom: ${(props) => props.borderB || '1px solid black'};
 `;
 
 export const GameStatusModalFrame = styled.div`
@@ -120,7 +161,7 @@ export const AlignRow = styled.div<AlignRowProps>`
   align-items: center;
   justify-content: ${(props) => props.justify};
   gap: 10px;
-  padding: 3px 5px;
+  padding: 3px 0px;
 `;
 
 export const ColummItem = styled.div`

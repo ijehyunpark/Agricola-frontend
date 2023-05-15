@@ -6,6 +6,7 @@ import MajorCardModal from './MajorCardModal';
 import SubCardModal from './SubCardModal';
 import JobCardModal from './JobCardModal';
 import GameStatusModal from './GameStatusModal';
+import FinalScoreModal from './FinalScoreModal';
 
 import { RootState } from '../../redux/store';
 
@@ -19,6 +20,7 @@ function ModalController() {
       {isOpen['subCardModal'] ? <SubCardModal /> : null}
       {isOpen['jobCardModal'] ? <JobCardModal /> : null}
       {isOpen['gameStatusModal'] ? <GameStatusModal /> : null}
+      {isOpen['finalScoreModal'] ? <FinalScoreModal /> : null}
     </>
   );
 }

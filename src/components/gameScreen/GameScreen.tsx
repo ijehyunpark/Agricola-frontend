@@ -24,8 +24,6 @@ function GameScreen() {
   //   margin: marginTuple,
   // };
 
-
-
   const GridLayoutProps = {
     cols: 11,
     rowHeight: 72,
@@ -41,7 +39,7 @@ function GameScreen() {
   return (
     <B.Background>
       <B.BoardFrame>
-      <StartBtns></StartBtns>
+        {/* <StartBtns /> */}
         <GridLayout className='layout' layout={gridLg} {...GridLayoutProps}>
           {/* row1 */}
           <B.TileFrame key='bush_forest'>
