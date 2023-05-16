@@ -4,13 +4,16 @@ import * as M from '../modalComponent/ModalComponent';
 import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
 import { gridXLg, gridLg } from './Grid';
 
-import { InitialResourceTile, RoundResourceTile } from '../boardComponent/ResourceTile';
+import { InitialResourceTile, RoundResourceTile} from '../boardComponent/ResourceTile';
 import { InitialActionTile, RoundActionTile } from '../boardComponent/ActionTile';
 import CardBtns from '../boardComponent/CardBtns';
 import StartBtns from '../boardComponent/Startbtns';
 import PlayerStatus from '../sideComponent/PlayerStatus';
 
 import ModalController from '../modalComponent/ModalController';
+
+import { HomeAera } from '../boardComponent/HomeTile';
+import { JobAera } from '../boardComponent/JobTile';
 
 function GameScreen() {
   const marginTuple: [number, number] = [0, 0];
@@ -99,15 +102,24 @@ function GameScreen() {
           <B.TileFrame key='reed_fishing'>
             <InitialResourceTile resourceName={'갈대'} resourceType={'resource/reed'} numOfResource={1} />
             <InitialResourceTile resourceName={'낚시'} resourceType={'resource/food'} numOfResource={1} />
-          </B.TileFrame>
+          </B.TileFrame>  
           <B.TileFrame key='round4'>22</B.TileFrame>
           <B.TileFrame key='round7'>23</B.TileFrame>
 
           {/* playerBoard */}
-          <B.TileFrame key='playerBoard'>24</B.TileFrame>
+          <B.TileFrame key='playerBoard'>
+
+          <HomeAera></HomeAera>
+
+            {/* <HomeResourceTile></HomeResourceTile> */}
+
+          </B.TileFrame>
 
           {/* active card list */}
-          <B.TileFrame key='activeCardList'>25</B.TileFrame>
+          <B.TileFrame key='activeCardList'>
+
+            <JobAera></JobAera>
+          </B.TileFrame>
         </GridLayout>
       </B.BoardFrame>
       <ModalController />
