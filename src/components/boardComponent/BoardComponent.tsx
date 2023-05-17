@@ -108,17 +108,12 @@ export const Card = styled.div`
   border: 1px solid black;
 `;
 
-
-
-
 export const Home = styled.div`
   width: 90px;
   height: 90px;
   border: 1px solid black;
   font-size: ${(props) => props.theme.fontSize.base};
 `;
-
-
 
 export const HomeTile = styled.div`
   width: 100%;
@@ -130,7 +125,7 @@ export const HomeTile = styled.div`
 `;
 
 export const HomeContentWrapper = styled.div`
-  position: relative; // 使用相对定位
+  position: relative;
   top: 10px;
   width: max-content;
   width: max-content;
@@ -143,7 +138,7 @@ export const HomeContentWrapper = styled.div`
 `;
 
 export const HomeBtnWrapper = styled.div`
-  position: relative; // 使用相对定位
+  position: relative;
   left: 220px;
   width: max-content;
   height: max-content;
@@ -154,7 +149,6 @@ export const HomeBtnWrapper = styled.div`
   border-radius: 7px;
 `;
 export const HomeBtn = styled.button`
-  
   width: 50px;
   height: 20px;
   font-size: ${(props) => props.theme.fontSize.base};
@@ -162,20 +156,16 @@ export const HomeBtn = styled.button`
   border-radius: 7px;
 `;
 
-
-
-
 export const JobBtnWrapper = styled.div`
   display: flex;
-  width: 600px;
-  height: 100px;
+  width: 650px;
+  height: 120px;
   flex-direction: row;
   flex-wrap: nowrap;
-  overflow: auto;
+  overflow-x: auto;
   background-color: white;
   border-radius: 7px;
 `;
-
 
 export const JobBtn = styled.button`
   min-width: 100px;
@@ -187,6 +177,3 @@ export const JobBtn = styled.button`
   margin-right: 10px;
   margin-top: 10px;
 `;
-
-
-
