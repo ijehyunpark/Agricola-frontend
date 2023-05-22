@@ -25,7 +25,7 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
-  height: 50vh;
+  height: 35vh;
   width: 70vh;
 
 `
@@ -41,17 +41,67 @@ export const Head = styled.div`
 `
 export const Close = styled.button`
   width: 5%;
+  height: ;
 `
 export const MainContent = styled.div`
 `
 export const RoomName = styled.div`
+  margin: 30px;
+  a{
+    font-size: 18pt;
+    text-align: center;
+  }
+  input{
+    margin-left: 10px;
+    width: 50vh;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(209, 203, 203);
+  }
 `
 export const RoomTimer = styled.div`
+margin: 30px;
+  a{
+      font-size: 18pt;
+    }
+    select{
+    margin-left: 10px;
+    width: 20vh;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(209, 203, 203);
+    }
 `
 export const RoomNickname = styled.div`
+margin: 30px;
+  a{
+      font-size: 18pt;
+    }
+  input{
+    margin-left: 10px;
+    width: 50vh;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(209, 203, 203);
+  }
 `
-export const Maker = styled.button`
+export const MakerDiv = styled.div`
+  margin: 0 20px;
+  float: right;
 `
+
 
 
 
@@ -65,12 +115,12 @@ const RoomMake= ({ onClose }: {onClose: () => void}) => {
         </Head>
         <MainContent>
           <RoomName>
-            <p>방 이름</p>
-            <input type="text" placeholder="방 이름을 입력해주세요"></input>
+            <a>방 이름</a>
+            <input id="name" type="text" placeholder="방 이름을 입력해주세요"></input>
           </RoomName>
           <RoomTimer>
-            <p>행동 선택 가능시간</p>
-            <select name="time">
+            <a>행동 선택 가능시간</a>
+            <select id="time" name="time">
               <option value="">골라</option>
               <option value="30초">30초</option>
               <option value="60초">60초</option>
@@ -79,10 +129,12 @@ const RoomMake= ({ onClose }: {onClose: () => void}) => {
             </select>
           </RoomTimer>
           <RoomNickname>
-            <p>닉네임</p>
-            <input type="text" placeholder="닉네임을 입력해주세요"></input>
+            <a>닉네임</a>
+            <input id="username" type="text" placeholder="닉네임을 입력해주세요"></input>
           </RoomNickname>
-          <Maker>방 만들기</Maker>
+          <MakerDiv>
+            <button>방 만들기</button>
+          </MakerDiv>
         </MainContent> 
       </ModalContent>
     </Modal>

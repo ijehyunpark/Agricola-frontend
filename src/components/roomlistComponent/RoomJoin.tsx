@@ -25,7 +25,7 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
-  height: 50vh;
+  height: 35vh;
   width: 70vh;
 
 `
@@ -43,7 +43,33 @@ export const Close = styled.button`
   width: 5%;
 `
 export const MainContent = styled.div`
-
+  div{
+    margin: 30px;
+  }
+  a{
+    font-size: 18pt;
+  }
+`
+export const RoomNickname = styled.div`
+margin: 30px;
+  a{
+      font-size: 18pt;
+    }
+  input{
+    margin-left: 10px;
+    width: 40vh;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(209, 203, 203);
+  }
+`
+export const JoinDiv = styled.div`
+  margin: 0 20px;
+  float: right;
 `
 
 
@@ -56,11 +82,19 @@ const RoomJoin = ({ onClose }: {onClose: () => void}) => {
           <Close onClick={onClose}>Close</Close>
         </Head>
         <MainContent>
-          <p>방 이름 : {}</p>
-          <p>행동 선택 가능시간 : {}</p>
-          <p>닉네임</p>
-          <input type="text" placeholder="닉네임을 입력해주세요"></input>
-          <button className="joinroom">입장하기</button>
+          <div>
+            <a>방 이름 : asd{}</a>
+          </div>
+          <div>
+            <a>행동 선택 가능시간 : asd{}</a>
+          </div>
+          <RoomNickname>
+            <a>닉네임</a>
+            <input id="username" type="text" placeholder="닉네임을 입력해주세요"></input>
+          </RoomNickname>
+          <JoinDiv>
+            <button className="joinroom">입장하기</button>
+          </JoinDiv>
         </MainContent> 
       </ModalContent>
     </Modal>
