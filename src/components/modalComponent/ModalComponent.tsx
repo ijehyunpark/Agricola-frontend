@@ -61,6 +61,16 @@ export const FinalScoreModalFrame = styled.div`
   background-position: center;
   background-size: cover; */
 `;
+export const FinalScoreModalButton = styled.div`
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0px 20px;
+  float: right;
+  button{
+    padding: 10px;
+    margin-left: 5px;
+  }
+`
 
 export const FinalScoreGrid = styled.div`
   display: grid;
