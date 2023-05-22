@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import * as B from '../boardComponent/BoardComponent';
-import * as M from '../modalComponent/ModalComponent';
 import MajorCardModal from './MajorCardModal';
 import SubCardModal from './SubCardModal';
 import JobCardModal from './JobCardModal';

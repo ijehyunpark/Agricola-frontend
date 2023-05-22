@@ -163,6 +163,7 @@ export const AlignColumn = styled.div<BgProps>`
 
 interface AlignRowProps {
   justify: string;
+  backgroundColor?: string;
 }
 
 export const AlignRow = styled.div<AlignRowProps>`
@@ -172,6 +173,7 @@ export const AlignRow = styled.div<AlignRowProps>`
   justify-content: ${(props) => props.justify};
   gap: 10px;
   padding: 3px 0px;
+  background-color: ${(props) => props.backgroundColor || 'initial'};
 `;
 
 export const ColummItem = styled.div`
