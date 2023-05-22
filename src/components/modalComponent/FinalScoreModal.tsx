@@ -146,6 +146,10 @@ function FinalScoreModal() {
           <M.GridTile borderR={'1px solid black'}></M.GridTile>
           <M.GridTile borderR={'none'}></M.GridTile>
         </M.FinalScoreGrid>
+        <M.FinalScoreModalButton>
+          <button>한번 더 하기</button>
+          <button onClick={alert}>나가기</button>
+        </M.FinalScoreModalButton>
       </M.FinalScoreModalFrame>
     </M.Modal>
   );

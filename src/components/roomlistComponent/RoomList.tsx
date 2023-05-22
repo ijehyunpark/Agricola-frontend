@@ -13,7 +13,7 @@ export const Background = styled.div`
 `;
 export const MainHeader = styled.div`
   height: 100px;
-  background-color: red;
+  background-color: #9F81F7;
 `;
 export const MainTitle = styled.h1`
   margin: 0;
@@ -22,7 +22,6 @@ export const MainTitle = styled.h1`
   font-size: 50pt;
 `;
 export const MakeButton = styled.button`
-  align-items: right;
 `;
 
 export const Roomlist = styled.div`
@@ -41,6 +40,10 @@ export const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const Makediv = styled.div`
+  margin: 0 20px;
+  float: right;
+`
 
 const RoomList = () => {
   const [roomMakeVisible, setRoomMakeVisible] = useState<boolean>(false);
@@ -57,7 +60,9 @@ const RoomList = () => {
     <Background>
       <MainHeader>
         <MainTitle>아그리콜라</MainTitle>
-        <MakeButton onClick={openRoomMake}>방만들기</MakeButton>
+        <Makediv>
+          <MakeButton onClick={openRoomMake}>방만들기</MakeButton>
+        </Makediv>
       </MainHeader>
       <Roomlist>
         {/* 반복문 처리로 해야함*/}
