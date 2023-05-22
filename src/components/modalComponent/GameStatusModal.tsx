@@ -184,7 +184,7 @@ function GameStatusModal() {
                 </M.AlignColumn>
               </M.AlignColumn>
             </M.AlignRow>
-            <M.AlignRow justify={'center'}>
+            <M.AlignRow justify={'center'} backgroundColor={'rgba(255,255,255,0.5)'}>
               <M.IconBox width={'48px'} height={'48px'} src={'img/tile/emptyTile.svg'} />
               <M.IconBox width={'48px'} height={'48px'} src={'img/tile/fenceWithBarnTile.svg'} />
               <M.IconBox width={'48px'} height={'48px'}>
