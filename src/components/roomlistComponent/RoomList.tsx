@@ -1,35 +1,60 @@
-import React, { useState } from 'react';
-import RoomMake from './RoomMake';
-import RoomJoin from './RoomJoin';
-import Room from './Room';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { openModal } from '../../redux/reducers/modalReducer';
 
-export const Background = styled.div`
-  width: 60vh;
+import styled from 'styled-components';
+import axios from 'axios';
+
+import RoomMakeModal from '../modalComponent/RoomMakeModal';
+import Room from './Room';
+
+const Background = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
   height: 100vh;
-  border: 30px;
   margin: 0 auto;
+`;
+
+const ListFrame = styled.div`
+  width: 100%;
+  height: 520px;
+  border-radius: 5px;
   background-color: #eeeeee;
 `;
-export const MainHeader = styled.div`
-  height: 100px;
-  background-color: #9F81F7;
-`;
-export const MainTitle = styled.h1`
-  margin: 0;
-  height: 50px;
-  text-align: center;
-  font-size: 50pt;
-`;
-export const MakeButton = styled.button`
+
+const ListFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 10px;
 `;
 
-export const Roomlist = styled.div`
+const MainHeader = styled.div`
+  height: 160px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  background-color: #f99c35;
+  background-image: url('img/etc/logo.svg');
+  background-position: center;
+  background-size: cover;
+`;
+
+const MakeRoomButton = styled.button`
+  font-size: ${(props) => props.theme.fontSize.base};
+  height: 40px;
+`;
+
+const Roomlist = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  place-items: center;
+  padding: 10px;
 `;
-
-export const ModalContainer = styled.div`
+const ModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -40,41 +65,65 @@ export const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const Makediv = styled.div`
-  margin: 0 20px;
-  float: right;
-`
 
-const RoomList = () => {
-  const [roomMakeVisible, setRoomMakeVisible] = useState<boolean>(false);
-  const [roomJoinVisible, setRoomJoinVisible] = useState<boolean>(false);
+interface RoomListProps {
+  greetingPublish: (gameRoomId: number, name: string) => void;
+}
 
-  const openRoomMake = () => {
-    setRoomMakeVisible(true);
-  };
+// function RoomList({ greetingPublish }: RoomListProps) {
+function RoomList() {
+  const isOpen = useSelector((state: RootState) => state.modal);
+  const dispatch = useDispatch();
+  interface RoomList {
+    id: number;
+    name: string;
+    capacity: number;
+    participantNumber: number;
+  }
 
-  const openRoomJoin = () => {
-    setRoomJoinVisible(true);
-  };
+  const [roomList, setRoomList] = useState<RoomList[]>([]);
+  useEffect(() => {
+    const getRoomList = () => {
+      try {
+        const fetchData = async () => {
+          await axios
+            .get('http://20.214.216.185:8080/rooms', {
+              withCredentials: true,
+            })
+            .then((res) => {
+              setRoomList(res.data);
+            });
+        };
+        fetchData();
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRoomList();
+  }, []);
+
   return (
     <Background>
-      <MainHeader>
-        <MainTitle>아그리콜라</MainTitle>
-        <Makediv>
-          <MakeButton onClick={openRoomMake}>방만들기</MakeButton>
-        </Makediv>
-      </MainHeader>
-      <Roomlist>
-        {/* 반복문 처리로 해야함*/}
-        <Room roomTitle='방제목1' player={1} timeset={30} onClick={openRoomJoin}></Room>
-      </Roomlist>
-      {/* RoomMake 모달창 */}
-      {roomMakeVisible && <RoomMake onClose={() => setRoomMakeVisible(false)} />}
+      <ListFrame>
+        <MainHeader
+          onClick={() => {
+            console.log(roomList);
+          }}
+        />
 
-      {/* RoomJoin 모달창 */}
-      {roomJoinVisible && <RoomJoin onClose={() => setRoomJoinVisible(false)} />}
+        <Roomlist>
+          {/* 반복문 처리로 해야함*/}
+          {roomList.length > 0 ? roomList.map((data, i) => <Room roomTitle={data.name} capacity={4} participantNumber={data.participantNumber} timeset={60} key={i} />) : null}
+        </Roomlist>
+
+        <ListFooter>
+          <MakeRoomButton onClick={() => dispatch(openModal('roomMakeModal'))}>방만들기</MakeRoomButton>
+        </ListFooter>
+      </ListFrame>
+
+      {isOpen['roomMakeModal'] ? <RoomMakeModal /> : null}
     </Background>
   );
-};
+}
 
 export default RoomList;

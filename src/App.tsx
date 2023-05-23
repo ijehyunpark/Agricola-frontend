@@ -17,8 +17,8 @@ function App() {
       <GlobalStyle />
       <Provider store={store}>
         <ThemeProvider theme={defaultTheme}>
-          {/* <RoomList></RoomList> */}
-          <GameScreen />
+          <RoomList />
+          {/* <GameScreen /> */}
         </ThemeProvider>
       </Provider>
     </>

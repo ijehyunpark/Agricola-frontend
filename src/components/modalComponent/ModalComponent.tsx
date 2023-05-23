@@ -32,6 +32,13 @@ const ModalCloseIcon = styled.img`
   cursor: pointer;
 `;
 
+export const RoomModalFrame = styled.div`
+  padding: 30px;
+  background-color: ${(props) => props.theme.colors.tileBg};
+
+  border-radius: 5px;
+`;
+
 export const CardModalGrid = styled.div<{ n: number }>`
   display: grid;
   padding: 60px;
@@ -66,11 +73,11 @@ export const FinalScoreModalButton = styled.div`
   padding-bottom: 5px;
   margin: 0px 20px;
   float: right;
-  button{
+  button {
     padding: 10px;
     margin-left: 5px;
   }
-`
+`;
 
 export const FinalScoreGrid = styled.div`
   display: grid;
