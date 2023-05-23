@@ -12,10 +12,17 @@ import PlayerStatus from '../sideComponent/PlayerStatus';
 
 import ModalController from '../modalComponent/ModalController';
 
+import { ActionProps, ExchangeProps } from '../../socket/Websocket';
+
 import { HomeArea } from '../boardComponent/HomeTile';
 import { JobArea } from '../boardComponent/JobTile';
 
-function GameScreen() {
+interface GameScreenProps {
+  actionPublish: (gameRoomId: number, ActionObj: ActionProps) => void;
+  exchangePublish: (gameRoomId: number, exchangeObj: ExchangeProps) => void;
+}
+
+function GameScreen({ actionPublish, exchangePublish }: GameScreenProps) {
   const marginTuple: [number, number] = [0, 0];
   // const ResponsiveGridLayoutProps = {
   //   cols: { xlg: 11, lg: 11, md: 11, sm: 11, xs: 11, xxs: 11 },
@@ -108,12 +115,12 @@ function GameScreen() {
 
           {/* playerBoard */}
           <B.TileFrame key='playerBoard'>
-            <HomeArea></HomeArea>
+            <HomeArea />
           </B.TileFrame>
 
           {/* active card list */}
           <B.TileFrame key='activeCardList'>
-            <JobArea></JobArea>
+            <JobArea />
           </B.TileFrame>
         </GridLayout>
       </B.BoardFrame>

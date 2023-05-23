@@ -1,15 +1,35 @@
 // StompWebsocket.tsx
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Client, IMessage, Stomp } from '@stomp/stompjs';
+import RoomList from '../components/roomlistComponent/RoomList';
+import GameScreen from '../components/gameScreen/GameScreen';
 
 const SOCKET_URL = 'ws://20.196.241.203:8080/agricola';
 
-interface SocketProps {
-  gameRoomId: number;
+export interface ActionProps {
+  eventId: number;
+  acts: {
+    use: boolean;
+    acts: number | null;
+  }[];
 }
 
-const StompWebsocket = ({ gameRoomId }: SocketProps) => {
+export interface ExchangeProps {
+  eventId: number;
+  exchange: {
+    improvementId: number;
+    resource: {
+      resource: number;
+      count: number;
+    };
+    count: number;
+  }[];
+}
+
+const Websocket = () => {
   const stompClientRef = useRef<Client | null>(null);
+  const [messages, setMessages] = useState<string[] | null>([]);
+  const [lastMessage, setLastMessage] = useState<string | null>(null);
 
   useEffect(() => {
     stompClientRef.current = new Client({
@@ -17,7 +37,7 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
       debug: (str) => {
         console.log(str);
       },
-      reconnectDelay: 5000,
+
       onConnect: () => {
         console.log('Connected to Stomp Websocket server');
 
@@ -25,6 +45,9 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
           console.log('Received message:', message);
         });
       },
+      reconnectDelay: 5000,
+      heartbeatIncoming: 4000,
+      heartbeatOutgoing: 4000,
     });
     stompClientRef.current.activate();
 
@@ -33,7 +56,7 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
     };
   }, []);
 
-  const GreetingPublish = (name: string) => {
+  const greetingPublish = (gameRoomId: number, name: string) => {
     if (!stompClientRef.current || !stompClientRef.current.connected) {
       console.log('Stomp client not connected, cannot publish message');
       return;
@@ -44,9 +67,34 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
       destination: `/pub/greetings/${gameRoomId}`,
       body: JSON.stringify({ username: name }),
     });
+
+    stompClientRef.current.subscribe(
+      `/sub/channel/roomNumber${gameRoomId}`,
+      (message) => {
+        const messageId = JSON.parse(message.body).id;
+        const type = JSON.parse(message.body).type;
+        let content = '';
+
+        if (type === 'GREETING') content = '입장';
+        else if (type === 'LEAVE') content = '퇴장';
+        else if (type === 'DENIED') {
+          // setConnect(false);
+          return;
+        } else {
+          content = JSON.parse(message.body).content;
+        }
+        const sender = JSON.parse(message.body).sender;
+
+        if (lastMessage === null || lastMessage !== messageId) {
+          setLastMessage(messageId);
+          // setMessages((messages) => [...messages, [messageId, sender, content]]);
+        }
+      },
+      { ack: 'client.individualAck' }
+    );
   };
 
-  const StartGamePublish = () => {
+  const startGamePublish = (gameRoomId: number) => {
     if (!stompClientRef.current || !stompClientRef.current.connected) {
       console.log('Stomp client not connected, cannot publish message');
       return;
@@ -59,15 +107,7 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
     });
   };
 
-  interface ActionProps {
-    eventId: number;
-    acts: {
-      use: boolean;
-      acts: number | null;
-    }[];
-  }
-
-  const ActionPublish = (ActionObj: ActionProps) => {
+  const actionPublish = (gameRoomId: number, ActionObj: ActionProps) => {
     if (!stompClientRef.current || !stompClientRef.current.connected) {
       console.log('Stomp client not connected, cannot publish message');
       return;
@@ -88,19 +128,7 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
     });
   };
 
-  interface ExchangeProps {
-    eventId: number;
-    exchange: {
-      improvementId: number;
-      resource: {
-        resource: number;
-        count: number;
-      };
-      count: number;
-    }[];
-  }
-
-  const ExchangePublish = (exchangeObj: ExchangeProps) => {
+  const exchangePublish = (gameRoomId: number, exchangeObj: ExchangeProps) => {
     if (!stompClientRef.current || !stompClientRef.current.connected) {
       console.log('Stomp client not connected, cannot publish message');
       return;
@@ -123,11 +151,11 @@ const StompWebsocket = ({ gameRoomId }: SocketProps) => {
   };
 
   return (
-    <div>
-      <h2>React & TypeScript with StompJS Example</h2>
-      {/* <button onClick={handlePublish}>Publish Message</button> */}
-    </div>
+    <>
+      {/* <RoomList greetingPublish={greetingPublish} /> */}
+      <RoomList />
+    </>
   );
 };
 
-export default StompWebsocket;
+export default Websocket;
