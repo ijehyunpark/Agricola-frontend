@@ -4,7 +4,7 @@ import { Client, IMessage, Stomp } from '@stomp/stompjs';
 import RoomList from '../components/roomlistComponent/RoomList';
 import GameScreen from '../components/gameScreen/GameScreen';
 
-const SOCKET_URL = 'ws://20.196.241.203:8080/agricola';
+const SOCKET_URL = 'ws://20.214.69.254:8080/agricola';
 
 export interface ActionProps {
   eventId: number;
@@ -152,8 +152,8 @@ const Websocket = () => {
 
   return (
     <>
-      {/* <RoomList greetingPublish={greetingPublish} /> */}
-      <RoomList />
+      <RoomList greetingPublish={greetingPublish} />
+      {/* <GameScreen startGamePublish={startGamePublish} actionPublish={actionPublish} exchangePublish={exchangePublish} /> */}
     </>
   );
 };
