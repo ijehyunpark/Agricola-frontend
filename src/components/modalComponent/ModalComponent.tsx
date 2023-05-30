@@ -2,18 +2,18 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalState, openModal, closeModal } from '../../redux/reducers/modalReducer';
 
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
   z-index: 100;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 9999;
 `;
 
-const ModalBg = styled.div`
+export const ModalBg = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -23,7 +23,7 @@ const ModalBg = styled.div`
   background-color: transparent;
 `;
 
-const ModalCloseIcon = styled.img`
+export const ModalCloseIcon = styled.img`
   width: 24px;
   height: 24px;
   position: absolute;

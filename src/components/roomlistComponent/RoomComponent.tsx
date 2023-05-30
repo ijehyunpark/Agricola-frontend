@@ -146,3 +146,50 @@ export const Timer = styled.p`
   text-align: left;
   line-height: 180%;
 `;
+
+export const Background = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+  height: 100vh;
+  margin: 0 auto;
+`;
+
+export const ListFrame = styled.div`
+  width: 100%;
+  height: 520px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+`;
+
+export const ListFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 10px;
+`;
+
+export const MainHeader = styled.div`
+  height: 160px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  background-color: #f99c35;
+  background-image: url('img/etc/logo.svg');
+  background-position: center;
+  background-size: cover;
+`;
+
+export const MakeRoomButton = styled.button`
+  font-size: ${(props) => props.theme.fontSize.base};
+  height: 40px;
+`;
+
+export const Roomlist = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  place-items: center;
+  height: 290px;
+  padding: 10px;
+`;

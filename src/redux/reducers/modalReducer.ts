@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ModalState {
   roomMakeModal: boolean;
-  roomJoinModal: boolean;
+  // roomJoinModal: boolean;
   majorCardModal: boolean;
   subCardModal: boolean;
   jobCardModal: boolean;
@@ -19,7 +19,7 @@ interface ModalAction {
 
 const initialState: ModalState = {
   roomMakeModal: false,
-  roomJoinModal: false,
+  // roomJoinModal: false,
   majorCardModal: false,
   subCardModal: false,
   jobCardModal: false,
@@ -34,7 +34,6 @@ export const modalSlice = createSlice({
   initialState,
   reducers: {
     openModal(state: ModalState, action: ModalAction) {
-      console.log(action.payload);
       state[action.payload] = true;
     },
     closeModal(state: ModalState, action: ModalAction) {

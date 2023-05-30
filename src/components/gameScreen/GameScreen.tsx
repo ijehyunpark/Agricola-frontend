@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as B from '../boardComponent/BoardComponent';
 import * as M from '../modalComponent/ModalComponent';
 import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
@@ -7,7 +7,6 @@ import { gridXLg, gridLg } from './Grid';
 import { InitialResourceTile, RoundResourceTile } from '../boardComponent/ResourceTile';
 import { InitialActionTile, RoundActionTile } from '../boardComponent/ActionTile';
 import CardBtns from '../boardComponent/CardBtns';
-import StartBtns from '../boardComponent/Startbtns';
 import PlayerStatus from '../sideComponent/PlayerStatus';
 
 import ModalController from '../modalComponent/ModalController';
@@ -20,9 +19,10 @@ import { JobArea } from '../boardComponent/JobTile';
 interface GameScreenProps {
   actionPublish: (gameRoomId: number, ActionObj: ActionProps) => void;
   exchangePublish: (gameRoomId: number, exchangeObj: ExchangeProps) => void;
+  startGamePublish: (gameRoomId: number) => void;
 }
 
-function GameScreen({ actionPublish, exchangePublish }: GameScreenProps) {
+function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameScreenProps) {
   const marginTuple: [number, number] = [0, 0];
   // const ResponsiveGridLayoutProps = {
   //   cols: { xlg: 11, lg: 11, md: 11, sm: 11, xs: 11, xxs: 11 },
@@ -70,11 +70,6 @@ function GameScreen({ actionPublish, exchangePublish }: GameScreenProps) {
           <B.TileFrame key='round12'>7</B.TileFrame>
           <B.TileFrame key='round14'>8</B.TileFrame>
 
-          {/* profile & timer & scoreboard */}
-          <B.TileFrame key='rightSide'>
-            <PlayerStatus />
-          </B.TileFrame>
-
           {/* row2 */}
           <B.TileFrame key='resource_clay'>
             <InitialResourceTile resourceName={'자원시장'} resourceType={'resource/wood'} numOfResource={1} />
@@ -121,6 +116,11 @@ function GameScreen({ actionPublish, exchangePublish }: GameScreenProps) {
           {/* active card list */}
           <B.TileFrame key='activeCardList'>
             <JobArea />
+          </B.TileFrame>
+
+          {/* profile & timer & scoreboard */}
+          <B.TileFrame key='rightSide'>
+            <PlayerStatus />
           </B.TileFrame>
         </GridLayout>
       </B.BoardFrame>
