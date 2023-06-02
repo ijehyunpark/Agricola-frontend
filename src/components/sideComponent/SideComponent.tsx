@@ -41,10 +41,9 @@ export const StatusFrame = styled.div`
   justify-content: center;
   width: 100%;
   padding: 5px;
-  /* height: 22%; */
-  border: 1px solid black;
-  border-radius: 3px;
   background-color: ${(props) => props.theme.colors.tileBg};
+  border: 5px solid ${(props) => props.theme.colors.tileNameBorder};
+  border-radius: 5px;
 `;
 
 export const StatusHeader = styled.div`
@@ -97,7 +96,6 @@ export const ContentIconLg = styled.img`
   height: 32px;
 `;
 
-
 export const ScoreBoardBtn = styled.button`
   width: 32px;
   height: 32px;
@@ -107,7 +105,6 @@ export const ScoreBoardBtn = styled.button`
   background-size: cover;
   background-color: ${(props) => props.theme.colors.tileBg};
 `;
-
 
 const ContentCount = styled.span`
   font-size: ${(props) => props.theme.fontSize.base};

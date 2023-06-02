@@ -9,12 +9,16 @@ import { InitialActionTile, RoundActionTile } from '../boardComponent/ActionTile
 import CardBtns from '../boardComponent/CardBtns';
 import PlayerStatus from '../sideComponent/PlayerStatus';
 
-import ModalController from '../modalComponent/ModalController';
+import InGameModalController from '../modalComponent/InGameModalController';
 
 import { ActionProps, ExchangeProps } from '../../socket/Websocket';
 
 import { HomeArea } from '../boardComponent/HomeTile';
 import { JobArea } from '../boardComponent/JobTile';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { saveRoomInfo } from '../../redux/reducers/roomReducer';
+import { RootState } from '../../redux/store';
 
 interface GameScreenProps {
   actionPublish: (gameRoomId: number, ActionObj: ActionProps) => void;
@@ -46,6 +50,12 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
 
   // const ResponsiveGridLayout = WidthProvider(Responsive);
 
+  const dispatch = useDispatch();
+  const roomInfo = useSelector((state: RootState) => state.room);
+  useEffect(() => {
+    startGamePublish(roomInfo.id);
+  });
+
   return (
     <B.Background>
       <B.BoardFrame>
@@ -57,8 +67,8 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
             <InitialResourceTile resourceName={'수풀'} resourceType={'resource/wood'} numOfResource={2} />
           </B.TileFrame>
           <B.TileFrame key='roomExtend_meeting'>
-            <InitialActionTile actionName={'농장확장'} actionType={'농장확장'} />
-            <InitialActionTile actionName={'회합장소'} actionType={'회합장소'} />
+            <InitialActionTile actionName={'농장확장'} actionType={'house/Extend'} />
+            <InitialActionTile actionName={'회합장소'} actionType={'etc/groupPlace'} />
           </B.TileFrame>
           <B.TileFrame key='round1'>
             <RoundResourceTile resourceName={'양'} resourceType={'animal/sheep'} numOfResource={1} />
@@ -76,7 +86,7 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
             <InitialResourceTile resourceName={'점토 채굴장'} resourceType={'resource/clay'} numOfResource={2} />
           </B.TileFrame>
           <B.TileFrame key='seed_farm'>
-            <InitialResourceTile resourceName={'곡식종자'} resourceType={'resource/cropSeed'} numOfResource={1} />
+            <InitialResourceTile resourceName={'곡식종자'} resourceType={'resource/grain'} numOfResource={1} />
             <InitialActionTile actionName={'농지'} actionType={'tile/farm'} />
           </B.TileFrame>
           <B.TileFrame key='forest2_soil'>
@@ -95,11 +105,11 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
           {/* row3 */}
           <B.TileFrame key='train2_theater'>
             <InitialResourceTile resourceName={'유랑극단'} resourceType={'resource/food'} numOfResource={1} />
-            <InitialActionTile actionName={'교습2'} actionType={'card/jobCard'} />
+            <InitialActionTile actionName={'교습2'} actionType={'card/teaching2'} />
           </B.TileFrame>
           <B.TileFrame key='work_train1'>
             <InitialResourceTile resourceName={'날품팔이'} resourceType={'resource/food'} numOfResource={2} />
-            <InitialActionTile actionName={'교습1'} actionType={'card/jobCard'} />
+            <InitialActionTile actionName={'교습1'} actionType={'card/teaching1'} />
           </B.TileFrame>
           <B.TileFrame key='reed_fishing'>
             <InitialResourceTile resourceName={'갈대'} resourceType={'resource/reed'} numOfResource={1} />
@@ -124,7 +134,7 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
           </B.TileFrame>
         </GridLayout>
       </B.BoardFrame>
-      <ModalController />
+      <InGameModalController />
     </B.Background>
   );
 }

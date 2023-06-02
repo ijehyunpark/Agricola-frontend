@@ -9,8 +9,6 @@ import '/node_modules/react-resizable/css/styles.css';
 import './App.css';
 
 import Websocket from './socket/Websocket';
-import GameScreen from './components/gameScreen/GameScreen';
-import RoomList from './components/roomlistComponent/RoomList';
 
 function App() {
   return (
@@ -18,8 +16,6 @@ function App() {
       <GlobalStyle />
       <Provider store={store}>
         <ThemeProvider theme={defaultTheme}>
-          {/* <RoomList /> */}
-          {/* <GameScreen /> */}
           <Websocket />
         </ThemeProvider>
       </Provider>

@@ -163,13 +163,6 @@ export const ListFrame = styled.div`
   background-color: #eeeeee;
 `;
 
-export const ListFooter = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 10px;
-`;
-
 export const MainHeader = styled.div`
   height: 160px;
   width: 100%;
@@ -180,9 +173,24 @@ export const MainHeader = styled.div`
   background-size: cover;
 `;
 
+export const ListBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 360px;
+`;
+
+export const ListFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px 10px 10px;
+`;
+
 export const MakeRoomButton = styled.button`
-  font-size: ${(props) => props.theme.fontSize.base};
   height: 40px;
+  width: 80px;
+  border-radius: 5px;
+  font-size: ${(props) => props.theme.fontSize.base};
 `;
 
 export const Roomlist = styled.div`
@@ -190,6 +198,5 @@ export const Roomlist = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   place-items: center;
-  height: 290px;
   padding: 10px;
 `;

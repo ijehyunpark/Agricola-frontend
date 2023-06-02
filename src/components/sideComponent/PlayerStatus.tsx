@@ -26,13 +26,13 @@ function PlayerStatus() {
           <S.StatusResource resourceSrc={'resource/clay'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/stone'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/reed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/cropSeed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/vegetableSeed'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/grain'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/vegetable'} resourceCount={1} />
           <S.StatusResourceLimited resourceSrc={'resource/food'} resourceCount={1} resourceMaximumCount={6} />
           <S.StatusResource resourceSrc={'resource/hungerToken'} resourceCount={1} />
 
           <S.StatusResource resourceSrc={'animal/sheep'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'animal/pig'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'animal/wildboar'} resourceCount={1} />
           <S.StatusResource resourceSrc={'animal/cow'} resourceCount={1} />
           <div />
           <S.StatusResourceLimited resourceSrc={'etc/human_green'} resourceCount={1} resourceMaximumCount={5} />
@@ -51,13 +51,13 @@ function PlayerStatus() {
           <S.StatusResource resourceSrc={'resource/clay'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/stone'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/reed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/cropSeed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/vegetableSeed'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/grain'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/vegetable'} resourceCount={1} />
           <S.StatusResourceLimited resourceSrc={'resource/food'} resourceCount={1} resourceMaximumCount={6} />
           <S.StatusResource resourceSrc={'resource/hungerToken'} resourceCount={1} />
 
           <S.StatusResource resourceSrc={'animal/sheep'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'animal/pig'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'animal/wildboar'} resourceCount={1} />
           <S.StatusResource resourceSrc={'animal/cow'} resourceCount={1} />
           <div />
           <S.StatusResourceLimited resourceSrc={'etc/human_green'} resourceCount={1} resourceMaximumCount={5} />
@@ -75,13 +75,13 @@ function PlayerStatus() {
           <S.StatusResource resourceSrc={'resource/clay'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/stone'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/reed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/cropSeed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/vegetableSeed'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/grain'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/vegetable'} resourceCount={1} />
           <S.StatusResourceLimited resourceSrc={'resource/food'} resourceCount={1} resourceMaximumCount={6} />
           <S.StatusResource resourceSrc={'resource/hungerToken'} resourceCount={1} />
 
           <S.StatusResource resourceSrc={'animal/sheep'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'animal/pig'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'animal/wildboar'} resourceCount={1} />
           <S.StatusResource resourceSrc={'animal/cow'} resourceCount={1} />
           <div />
           <S.StatusResourceLimited resourceSrc={'etc/human_green'} resourceCount={1} resourceMaximumCount={5} />
@@ -99,13 +99,13 @@ function PlayerStatus() {
           <S.StatusResource resourceSrc={'resource/clay'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/stone'} resourceCount={1} />
           <S.StatusResource resourceSrc={'resource/reed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/cropSeed'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'resource/vegetableSeed'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/grain'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'resource/vegetable'} resourceCount={1} />
           <S.StatusResourceLimited resourceSrc={'resource/food'} resourceCount={1} resourceMaximumCount={6} />
           <S.StatusResource resourceSrc={'resource/hungerToken'} resourceCount={1} />
 
           <S.StatusResource resourceSrc={'animal/sheep'} resourceCount={1} />
-          <S.StatusResource resourceSrc={'animal/pig'} resourceCount={1} />
+          <S.StatusResource resourceSrc={'animal/wildboar'} resourceCount={1} />
           <S.StatusResource resourceSrc={'animal/cow'} resourceCount={1} />
           <div />
           <S.StatusResourceLimited resourceSrc={'etc/human_green'} resourceCount={1} resourceMaximumCount={5} />

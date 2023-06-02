@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ModalState {
   roomMakeModal: boolean;
+  waitingModal: boolean;
   // roomJoinModal: boolean;
   majorCardModal: boolean;
   subCardModal: boolean;
@@ -19,6 +20,7 @@ interface ModalAction {
 
 const initialState: ModalState = {
   roomMakeModal: false,
+  waitingModal: false,
   // roomJoinModal: false,
   majorCardModal: false,
   subCardModal: false,
