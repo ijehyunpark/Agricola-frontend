@@ -22,11 +22,11 @@ function GameStatusModal() {
                     <M.CountText>0</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/cropSeed.svg' />
+                    <M.Icons src='img/resource/grain.svg' />
                     <M.CountText>0</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/vegetableSeed.svg' />
+                    <M.Icons src='img/resource/vegetable.svg' />
                     <M.CountText>0</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -34,7 +34,7 @@ function GameStatusModal() {
                     <M.CountText>0</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/animal/pig.svg' />
+                    <M.Icons src='img/animal/wildboar.svg' />
                     <M.CountText>0</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -57,11 +57,11 @@ function GameStatusModal() {
                     <M.CountText>1</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/cropSeed.svg' />
+                    <M.Icons src='img/resource/grain.svg' />
                     <M.CountText>1~3</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/vegetableSeed.svg' />
+                    <M.Icons src='img/resource/vegetable.svg' />
                     <M.CountText>1</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -69,7 +69,7 @@ function GameStatusModal() {
                     <M.CountText>1~3</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/animal/pig.svg' />
+                    <M.Icons src='img/animal/wildboar.svg' />
                     <M.CountText>1~2</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -92,11 +92,11 @@ function GameStatusModal() {
                     <M.CountText>2</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/cropSeed.svg' />
+                    <M.Icons src='img/resource/grain.svg' />
                     <M.CountText>4~5</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/vegetableSeed.svg' />
+                    <M.Icons src='img/resource/vegetable.svg' />
                     <M.CountText>2</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -104,7 +104,7 @@ function GameStatusModal() {
                     <M.CountText>4~5</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/animal/pig.svg' />
+                    <M.Icons src='img/animal/wildboar.svg' />
                     <M.CountText>3~4</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -127,11 +127,11 @@ function GameStatusModal() {
                     <M.CountText>3</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/cropSeed.svg' />
+                    <M.Icons src='img/resource/grain.svg' />
                     <M.CountText>6~7</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/vegetableSeed.svg' />
+                    <M.Icons src='img/resource/vegetable.svg' />
                     <M.CountText>3</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -139,7 +139,7 @@ function GameStatusModal() {
                     <M.CountText>6~7</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/animal/pig.svg' />
+                    <M.Icons src='img/animal/wildboar.svg' />
                     <M.CountText>5~6</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -162,11 +162,11 @@ function GameStatusModal() {
                     <M.CountText>4+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/cropSeed.svg' />
+                    <M.Icons src='img/resource/grain.svg' />
                     <M.CountText>8+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/resource/vegetableSeed.svg' />
+                    <M.Icons src='img/resource/vegetable.svg' />
                     <M.CountText>4+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -174,7 +174,7 @@ function GameStatusModal() {
                     <M.CountText>8+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
-                    <M.Icons src='img/animal/pig.svg' />
+                    <M.Icons src='img/animal/wildboar.svg' />
                     <M.CountText>7+</M.CountText>
                   </M.ColummItem>
                   <M.ColummItem>
@@ -187,12 +187,9 @@ function GameStatusModal() {
             <M.AlignRow justify={'center'} backgroundColor={'rgba(255,255,255,0.5)'}>
               <M.IconBox width={'48px'} height={'48px'} src={'img/tile/emptyTile.svg'} />
               <M.IconBox width={'48px'} height={'48px'} src={'img/tile/fenceWithBarnTile.svg'} />
-              <M.IconBox width={'48px'} height={'48px'}>
-                흙집
-              </M.IconBox>
-              <M.IconBox width={'48px'} height={'48px'}>
-                돌집
-              </M.IconBox>
+              <M.IconBox width={'48px'} height={'48px'} src={'img/house/clayHouse.svg'} />
+
+              <M.IconBox width={'48px'} height={'48px'} src={'img/house/stoneHouse.svg'} />
 
               <M.IconBox width={'48px'} height={'48px'} src={'img/etc/familyScore.svg'} />
               <M.IconBox width={'48px'} height={'48px'}>
