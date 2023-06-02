@@ -5,14 +5,14 @@ interface PlayerStatus {
   clay: number;
   stone: number;
   reed: number;
-  cropSeed: number;
-  vegetableSeed: number;
+  grain: number;
+  vegetable: number;
   food: number;
-  hungerToken?: number;
+  hungerToken: number;
   sheep: number;
+  wildboar: number;
   cow: number;
-  pig: number;
-  family: number;
+  cattle: number; //외양간
   fence: number;
-  cowshed: number; //외양간
+  family: number;
 }

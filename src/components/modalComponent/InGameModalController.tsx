@@ -8,7 +8,7 @@ import FinalScoreModal from './FinalScoreModal';
 
 import { RootState } from '../../redux/store';
 
-function ModalController() {
+function InGameModalController() {
   const isOpen = useSelector((state: RootState) => state.modal);
   // const modalList = ['majorCardModal', 'subCardModal', 'jobCardModal', 'gameStatusModal', 'resourceExchangeModal', 'foodSelectionModal', 'finalScoreBoardModal'];
 
@@ -23,4 +23,4 @@ function ModalController() {
   );
 }
 
-export default ModalController;
+export default InGameModalController;

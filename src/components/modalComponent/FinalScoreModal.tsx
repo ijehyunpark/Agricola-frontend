@@ -14,16 +14,16 @@ function FinalScoreModal() {
             <M.IconBox width={'32px'} height={'32px'} src={'img/tile/fenceTile.svg'} />
           </M.GridTile>
           <M.GridTile>
-            <M.IconBox width={'32px'} height={'32px'} src={'img/resource/cropSeed.svg'} />
+            <M.IconBox width={'32px'} height={'32px'} src={'img/resource/grain.svg'} />
           </M.GridTile>
           <M.GridTile>
-            <M.IconBox width={'32px'} height={'32px'} src={'img/resource/vegetableSeed.svg'} />
+            <M.IconBox width={'32px'} height={'32px'} src={'img/resource/vegetable.svg'} />
           </M.GridTile>
           <M.GridTile>
             <M.IconBox width={'32px'} height={'32px'} src={'img/animal/sheep.svg'} />
           </M.GridTile>
           <M.GridTile>
-            <M.IconBox width={'32px'} height={'32px'} src={'img/animal/pig.svg'} />
+            <M.IconBox width={'32px'} height={'32px'} src={'img/animal/wildboar.svg'} />
           </M.GridTile>
           <M.GridTile>
             <M.IconBox width={'32px'} height={'32px'} src={'img/animal/cow.svg'} />
@@ -34,8 +34,12 @@ function FinalScoreModal() {
           <M.GridTile>
             <M.IconBox width={'32px'} height={'32px'} src={'img/tile/fenceWithBarnTile.svg'} />
           </M.GridTile>
-          <M.GridTile>흙집</M.GridTile>
-          <M.GridTile>돌집</M.GridTile>
+          <M.GridTile>
+            <M.IconBox width={'32px'} height={'32px'} src={'img/house/clayHouse.svg'} />
+          </M.GridTile>
+          <M.GridTile>
+            <M.IconBox width={'32px'} height={'32px'} src={'img/house/stoneHouse.svg'} />
+          </M.GridTile>
           <M.GridTile>
             <M.IconBox width={'32px'} height={'32px'} src={'img/etc/human_black.svg'} />
           </M.GridTile>

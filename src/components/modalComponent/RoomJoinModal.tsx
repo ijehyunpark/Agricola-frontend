@@ -1,16 +1,24 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { openModal } from '../../redux/reducers/modalReducer';
+import { incrementParticipant } from '../../redux/reducers/roomReducer';
 import styled from 'styled-components';
 import * as R from '../roomlistComponent/RoomComponent';
 import * as M from './ModalComponent';
 
 type Roomprops = {
+  roomId: number;
   roomTitle: string;
   // capacity: number;
   timeset: number;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedRoomName: React.Dispatch<React.SetStateAction<string>>;
+  setNickname: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function RoomJoinModal({ roomTitle, timeset, setIsOpen }: Roomprops) {
+function RoomJoinModal({ roomId, roomTitle, timeset, setIsOpen, setSelectedRoomName, setNickname }: Roomprops) {
+  const dispatch = useDispatch();
   return (
     <M.ModalContainer>
       <M.ModalBg>
@@ -21,22 +29,28 @@ function RoomJoinModal({ roomTitle, timeset, setIsOpen }: Roomprops) {
           }}
         />
         <M.RoomModalFrame>
-          <R.Head>
-            <h2>방 입장</h2>
-          </R.Head>
           <R.MainContent>
             <div>
-              <a>방 이름 : {roomTitle}</a>
+              <span>방 이름 : {roomTitle}</span>
             </div>
             <div>
-              <a>행동 선택 가능시간 : {timeset}</a>
+              <span>행동 선택 가능시간 : {timeset}</span>
             </div>
             <R.RoomNickname>
-              <a>닉네임</a>
+              <span>닉네임</span>
               <input id='username' type='text' placeholder='닉네임을 입력해주세요'></input>
             </R.RoomNickname>
             <R.JoinDiv>
-              <button className='joinroom'>입장하기</button>
+              <button
+                className='joinroom'
+                onClick={() => {
+                  setIsOpen(false);
+                  // dispatch(incrementParticipant());
+                  setSelectedRoomName(roomTitle);
+                  dispatch(openModal('waitingModal'));
+                }}>
+                입장하기
+              </button>
             </R.JoinDiv>
           </R.MainContent>
         </M.RoomModalFrame>

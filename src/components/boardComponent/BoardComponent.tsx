@@ -1,10 +1,20 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+     opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const Background = styled.div`
   display: flex;
   align-items: center;
   height: 100vh;
   padding: 0 20px;
+  animation: ${fadeIn} 2s ease-in-out forwards;
 `;
 
 export const BoardFrame = styled.div`
@@ -88,9 +98,9 @@ export const ResourceText = styled.span`
   font-size: ${(props) => props.theme.fontSize.sm};
 `;
 
-export const Icon = styled.img`
-  width: 24px;
-  height: 24px;
+export const Icon = styled.img<{ width?: string | number; height?: string | number }>`
+  width: ${(props) => (props.width === undefined ? '24px' : props.width)};
+  height: ${(props) => (props.height === undefined ? '24px' : props.height)};
   padding: 3px;
   text-align: center;
 `;

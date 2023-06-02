@@ -1,29 +1,45 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { openModal, closeModal } from '../../redux/reducers/modalReducer';
+import { incrementParticipant, saveRoomInfo } from '../../redux/reducers/roomReducer';
 import axios from 'axios';
 import styled from 'styled-components';
 import * as R from '../roomlistComponent/RoomComponent';
 import * as M from './ModalComponent';
 
-function RoomMakeModal() {
+interface RoomMakeModalProps {
+  setSelectedRoomName: React.Dispatch<React.SetStateAction<string>>;
+  setNickname: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps) {
   const [roomName, setRoomName] = useState<string>('');
   // const [actionTime, setActionTime] = useState<number>(60);
   // const [userName, setUserName] = useState<number>('Player');
 
-  // axios.defaults.withCredentials = true;
+  const dispatch = useDispatch();
+
   const makeRoom = () => {
     try {
       const submit = async () => {
-        await axios.post(
-          'http://20.214.216.185:8080/rooms',
-          {
-            name: roomName,
-            capacity: 4,
-          },
-          {
-            withCredentials: true,
-          }
-        );
+        await axios
+          .post(
+            'http://20.214.220.69:8080/rooms',
+            {
+              name: roomName,
+              capacity: 4,
+            },
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            // dispatch(incrementParticipant());
+            setSelectedRoomName(roomName);
+          });
       };
+      submit();
     } catch (err) {
       console.log(err);
     }
@@ -32,23 +48,20 @@ function RoomMakeModal() {
   return (
     <M.Modal modalType='roomMakeModal'>
       <M.RoomModalFrame>
-        <R.Head>
-          <h2>방 만들기</h2>
-        </R.Head>
         <R.MainContent>
           <R.RoomName>
-            <a>방 이름</a>
+            <span>방 이름</span>
             <input
               id='name'
               type='text'
               placeholder='방 이름을 입력해주세요'
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log(roomName);
                 setRoomName(e.target.value);
-              }}></input>
+              }}
+            />
           </R.RoomName>
           <R.RoomTimer>
-            <a>행동 선택 가능시간</a>
+            <span>행동 선택 가능시간</span>
             <select id='time' name='time'>
               <option value=''>골라</option>
               <option value='30초'>30초</option>
@@ -58,11 +71,18 @@ function RoomMakeModal() {
             </select>
           </R.RoomTimer>
           <R.RoomNickname>
-            <a>닉네임</a>
-            <input id='username' type='text' placeholder='닉네임을 입력해주세요'></input>
+            <span>닉네임</span>
+            <input id='username' type='text' placeholder='닉네임을 입력해주세요' />
           </R.RoomNickname>
           <R.MakerDiv>
-            <button onClick={makeRoom}>방 만들기</button>
+            <button
+              onClick={() => {
+                makeRoom();
+                dispatch(closeModal('roomMakeModal'));
+                dispatch(openModal('waitingModal'));
+              }}>
+              방 만들기
+            </button>
           </R.MakerDiv>
         </R.MainContent>
       </M.RoomModalFrame>

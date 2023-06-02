@@ -4,7 +4,7 @@ import { Client, IMessage, Stomp } from '@stomp/stompjs';
 import RoomList from '../components/roomlistComponent/RoomList';
 import GameScreen from '../components/gameScreen/GameScreen';
 
-const SOCKET_URL = 'ws://20.214.69.254:8080/agricola';
+const SOCKET_URL = 'ws://20.214.220.69:8080/agricola';
 
 export interface ActionProps {
   eventId: number;
@@ -30,6 +30,7 @@ const Websocket = () => {
   const stompClientRef = useRef<Client | null>(null);
   const [messages, setMessages] = useState<string[] | null>([]);
   const [lastMessage, setLastMessage] = useState<string | null>(null);
+  const [isFull, setIsFull] = useState<boolean>(false);
 
   useEffect(() => {
     stompClientRef.current = new Client({
@@ -41,9 +42,9 @@ const Websocket = () => {
       onConnect: () => {
         console.log('Connected to Stomp Websocket server');
 
-        stompClientRef.current?.subscribe('/topic/messages', (message: IMessage) => {
-          console.log('Received message:', message);
-        });
+        // stompClientRef.current?.subscribe('/topic/messages', (message: IMessage) => {
+        //   console.log('Received message:', message);
+        // });
       },
       reconnectDelay: 5000,
       heartbeatIncoming: 4000,
@@ -65,15 +66,18 @@ const Websocket = () => {
     // Publish a message
     stompClientRef.current.publish({
       destination: `/pub/greetings/${gameRoomId}`,
-      body: JSON.stringify({ username: name }),
+      body: name,
     });
 
     stompClientRef.current.subscribe(
-      `/sub/channel/roomNumber${gameRoomId}`,
+      `/sub/channel/${gameRoomId}`,
       (message) => {
+        // 여기서 게임 상태 받아서 redux쪽으로 넘겨줘서 업데이트 하면될듯
         const messageId = JSON.parse(message.body).id;
         const type = JSON.parse(message.body).type;
         let content = '';
+        console.log('greetingpublish입니다.');
+        console.log(JSON.parse(message.body));
 
         if (type === 'GREETING') content = '입장';
         else if (type === 'LEAVE') content = '퇴장';
@@ -87,7 +91,7 @@ const Websocket = () => {
 
         if (lastMessage === null || lastMessage !== messageId) {
           setLastMessage(messageId);
-          // setMessages((messages) => [...messages, [messageId, sender, content]]);
+          setMessages((messages) => [messageId, sender, content]);
         }
       },
       { ack: 'client.individualAck' }
@@ -103,7 +107,6 @@ const Websocket = () => {
     // Publish a message
     stompClientRef.current.publish({
       destination: `/pub/start-game/${gameRoomId}`,
-      //   body: JSON.stringify({ username: name }),
     });
   };
 
@@ -150,12 +153,7 @@ const Websocket = () => {
     });
   };
 
-  return (
-    <>
-      <RoomList greetingPublish={greetingPublish} />
-      {/* <GameScreen startGamePublish={startGamePublish} actionPublish={actionPublish} exchangePublish={exchangePublish} /> */}
-    </>
-  );
+  return <>{isFull ? <GameScreen startGamePublish={startGamePublish} actionPublish={actionPublish} exchangePublish={exchangePublish} /> : <RoomList greetingPublish={greetingPublish} setIsFull={setIsFull} />}</>;
 };
 
 export default Websocket;
