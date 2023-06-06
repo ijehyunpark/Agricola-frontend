@@ -34,25 +34,17 @@ export const TileFrame = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
+
   border: 1px solid black;
 `;
 
-export const HalfTile = styled.div`
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const FullTile = styled.div`
+export const Tile = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 `;
 
 export const FlipTile = styled.div`
@@ -65,8 +57,8 @@ export const FlipTile = styled.div`
 `;
 
 export const TileName = styled.h3`
-  width: fit-content;
-  padding: ${(props) => props.theme.paddings.xs} ${(props) => props.theme.paddings.base};
+  min-width: 85px;
+  padding: ${(props) => props.theme.paddings.xs} 0;
   text-align: center;
   font-size: ${(props) => props.theme.fontSize.sm};
   margin: 2px;
@@ -76,12 +68,43 @@ export const TileName = styled.h3`
 `;
 
 export const TileContentWrapper = styled.div`
-  width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 85px;
   background-color: ${(props) => props.theme.colors.tileBg};
   border-radius: 7px;
+`;
+
+export const StackPlace = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 24px;
+  /* gap: -10px; */
+`;
+
+export const StackResource = styled.img<{ left: number }>`
+  position: absolute;
+  left: ${(props) => props.left * 10}px;
+  width: 24px;
+  height: 24px;
+`;
+
+export const StackCount = styled.span`
+  position: absolute;
+  bottom: -5px;
+  right: -10%;
+  border-radius: 100%;
+  border: 1px solid black;
+  width: 8px;
+  height: 8px;
+  line-height: 8px;
+  text-align: center;
+  padding: ${(props) => props.theme.paddings.xs};
+  font-size: ${(props) => props.theme.fontSize.sm};
+  background-color: orange;
 `;
 
 export const TileBack = styled.div`
