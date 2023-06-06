@@ -35,7 +35,7 @@ function RoomList({ greetingPublish, setIsFull }: RoomListProps) {
       try {
         const fetchData = async () => {
           await axios
-            .get('http://20.214.220.69:8080/rooms', {
+            .get('http://20.214.76.230:8080/rooms', {
               withCredentials: true,
             })
             .then((res) => {
@@ -56,11 +56,7 @@ function RoomList({ greetingPublish, setIsFull }: RoomListProps) {
   return (
     <R.Background>
       <R.ListFrame>
-        <R.MainHeader
-          onClick={() => {
-            console.log(roomList);
-          }}
-        />
+        <R.MainHeader />
         <R.ListBody>
           {roomList.length > 0 ? (
             <>
