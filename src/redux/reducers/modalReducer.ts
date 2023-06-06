@@ -1,28 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface ModalState {
-  majorCardModal: boolean;
-  subCardModal: boolean;
-  jobCardModal: boolean;
-  gameStatusModal: boolean;
-  resourceExchangeModal: boolean;
-  foodSelectionModal: boolean;
-  finalScoreBoardModal: boolean;
-}
-
-interface ModalAction {
-  type: string;
-  payload: keyof ModalState;
-}
+import { ModalState } from '../../interface/interfaces';
+import { ModalAction } from '../../interface/interfaces';
 
 const initialState: ModalState = {
+  roomMakeModal: false,
+  waitingModal: false,
+  // roomJoinModal: false,
   majorCardModal: false,
   subCardModal: false,
   jobCardModal: false,
   gameStatusModal: false,
   resourceExchangeModal: false,
   foodSelectionModal: false,
-  finalScoreBoardModal: false,
+  finalScoreModal: false,
 };
 
 export const modalSlice = createSlice({

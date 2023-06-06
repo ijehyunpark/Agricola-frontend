@@ -1,10 +1,20 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+     opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const Background = styled.div`
   display: flex;
   align-items: center;
   height: 100vh;
   padding: 0 20px;
+  animation: ${fadeIn} 2s ease-in-out forwards;
 `;
 
 export const BoardFrame = styled.div`
@@ -24,30 +34,31 @@ export const TileFrame = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
+
   border: 1px solid black;
 `;
 
-export const HalfTile = styled.div`
+export const Tile = styled.div`
   width: 100%;
-  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-export const FullTile = styled.div`
+export const FlipTile = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
 `;
 
 export const TileName = styled.h3`
-  width: fit-content;
-  padding: ${(props) => props.theme.paddings.xs} ${(props) => props.theme.paddings.base};
+  min-width: 85px;
+  padding: ${(props) => props.theme.paddings.xs} 0;
   text-align: center;
   font-size: ${(props) => props.theme.fontSize.sm};
   margin: 2px;
@@ -57,12 +68,52 @@ export const TileName = styled.h3`
 `;
 
 export const TileContentWrapper = styled.div`
-  width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 85px;
   background-color: ${(props) => props.theme.colors.tileBg};
   border-radius: 7px;
+`;
+
+export const StackPlace = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 24px;
+  /* gap: -10px; */
+`;
+
+export const StackResource = styled.img<{ left: number }>`
+  position: absolute;
+  left: ${(props) => props.left * 10}px;
+  width: 24px;
+  height: 24px;
+`;
+
+export const StackCount = styled.span`
+  position: absolute;
+  bottom: -5px;
+  right: -10%;
+  border-radius: 100%;
+  border: 1px solid black;
+  width: 8px;
+  height: 8px;
+  line-height: 8px;
+  text-align: center;
+  padding: ${(props) => props.theme.paddings.xs};
+  font-size: ${(props) => props.theme.fontSize.sm};
+  background-color: orange;
+`;
+
+export const TileBack = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 7px;
+  font-size: ${(props) => props.theme.fontSize.lg};
 `;
 
 export const ResourceText = styled.span`
@@ -70,9 +121,10 @@ export const ResourceText = styled.span`
   font-size: ${(props) => props.theme.fontSize.sm};
 `;
 
-export const Icon = styled.img`
-  width: 24px;
-  height: 24px;
+export const Icon = styled.img<{ width?: string | number; height?: string | number }>`
+  width: ${(props) => (props.width === undefined ? '24px' : props.width)};
+  height: ${(props) => (props.height === undefined ? '24px' : props.height)};
+  padding: 3px;
   text-align: center;
 `;
 
@@ -88,6 +140,7 @@ export const Card = styled.div`
   height: 240px;
   border: 1px solid black;
 `;
+
 
 export const Home1 = styled.div`
   position: relative;
@@ -158,8 +211,6 @@ export const HomeTilesWrapper = styled.div`
   height: 100%;
 `;
 
-
-
 export const Home = styled.div`
   width: 80px;
   height: 80px;
@@ -167,7 +218,6 @@ export const Home = styled.div`
   font-size: ${(props) => props.theme.fontSize.base};
   
 `;
-
 
 export const HomeTile = styled.div`
   width: 100%;
@@ -180,7 +230,7 @@ export const HomeTile = styled.div`
 `;
 
 export const HomeContentWrapper = styled.div`
-  position: relative; // 使用相对定位
+  position: relative;
   top: 10px;
   width: max-content;
   width: max-content;
@@ -194,7 +244,7 @@ export const HomeContentWrapper = styled.div`
 `;
 
 export const HomeBtnWrapper = styled.div`
-  position: relative; // 使用相对定位
+  position: relative;
   left: 220px;
   width: max-content;
   height: max-content;
@@ -205,7 +255,6 @@ export const HomeBtnWrapper = styled.div`
   border-radius: 7px;
 `;
 export const HomeBtn = styled.button`
-  
   width: 50px;
   height: 20px;
   font-size: ${(props) => props.theme.fontSize.base};
@@ -213,19 +262,17 @@ export const HomeBtn = styled.button`
   border-radius: 7px;
 `;
 
-
-
-
 export const JobBtnWrapper = styled.div`
   display: flex;
-  width: 600px;
-  height: 100px;
+  width: 650px;
+  height: 120px;
   flex-direction: row;
   flex-wrap: nowrap;
-  overflow: auto;
+  overflow-x: auto;
   background-color: white;
   border-radius: 7px;
 `;
+
 
 export const JobDetails = styled.div`
   width: 200px;
@@ -283,3 +330,4 @@ export const FenceContentWrapper = styled.div`
   gap: 20px;
   border-radius: 7px;
 `;
+

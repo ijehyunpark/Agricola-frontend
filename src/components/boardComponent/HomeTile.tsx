@@ -73,9 +73,6 @@
         setCellValue(maze,ID,0)
       }
       onClick();
-
-
-
     }
 
     return <B.FenceBtnColumn color={btnColor} onClick={handleBtnClick} />;
