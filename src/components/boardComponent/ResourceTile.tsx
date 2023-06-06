@@ -11,14 +11,14 @@ interface Props {
 
 export function InitialResourceTile({ ...props }: Props) {
   return (
-    <B.HalfTile>
+    <B.Tile>
       <B.TileContentWrapper>
         <B.TileName>{props.resourceName}</B.TileName>
         {/* <B.ResourceText>{props.resourceType}</B.ResourceText> */}
         <span>{props.numOfResource}</span>
         <B.Icon src={`img/${props.resourceType}.svg`} />
       </B.TileContentWrapper>
-    </B.HalfTile>
+    </B.Tile>
   );
 }
 
