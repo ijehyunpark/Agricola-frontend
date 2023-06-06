@@ -1,42 +1,35 @@
 // StompWebsocket.tsx
 import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { updatePlayersInfo } from '../redux/reducers/playerReducer';
+import { updateGameState } from '../redux/reducers/gameStateReducer';
+import { updateEventTile } from '../redux/reducers/eventTileReducer';
+import { updateCardList } from '../redux/reducers/cardReducer';
+
 import { Client, IMessage, Stomp } from '@stomp/stompjs';
 import RoomList from '../components/roomlistComponent/RoomList';
 import GameScreen from '../components/gameScreen/GameScreen';
 
-const SOCKET_URL = 'ws://20.214.220.69:8080/agricola';
+import { ActionMessageProps, ExchangeMessageProps, GameMessage, Participant, GameState, Event, CardDictionary } from '../interface/interfaces';
 
-export interface ActionProps {
-  eventId: number;
-  acts: {
-    use: boolean;
-    acts: number | null;
-  }[];
-}
-
-export interface ExchangeProps {
-  eventId: number;
-  exchange: {
-    improvementId: number;
-    resource: {
-      resource: number;
-      count: number;
-    };
-    count: number;
-  }[];
-}
+const SOCKET_URL = 'ws://20.214.76.230:8080/agricola';
 
 const Websocket = () => {
   const stompClientRef = useRef<Client | null>(null);
-  const [messages, setMessages] = useState<string[] | null>([]);
-  const [lastMessage, setLastMessage] = useState<string | null>(null);
+  const [userInfo, setUserInfo] = useState<Participant>({
+    username: 'player',
+    id: 0,
+  });
+  // const [messages, setMessages] = useState<string[] | null>([]);
+  // const [lastMessage, setLastMessage] = useState<string | null>(null);
   const [isFull, setIsFull] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     stompClientRef.current = new Client({
       brokerURL: SOCKET_URL,
       debug: (str) => {
-        console.log(str);
+        console.log('debug: ' + str);
       },
 
       onConnect: () => {
@@ -53,6 +46,7 @@ const Websocket = () => {
     stompClientRef.current.activate();
 
     return () => {
+      console.log('stomp socket deactivate');
       stompClientRef.current?.deactivate();
     };
   }, []);
@@ -69,33 +63,44 @@ const Websocket = () => {
       body: name,
     });
 
+    stompClientRef.current.subscribe('/user/queue/message', (message) => {
+      const response: Participant = JSON.parse(message.body);
+      console.log('---------response---------');
+      setUserInfo({ ...userInfo, ...response });
+    });
+
     stompClientRef.current.subscribe(
       `/sub/channel/${gameRoomId}`,
       (message) => {
         // 여기서 게임 상태 받아서 redux쪽으로 넘겨줘서 업데이트 하면될듯
-        const messageId = JSON.parse(message.body).id;
-        const type = JSON.parse(message.body).type;
-        let content = '';
-        console.log('greetingpublish입니다.');
-        console.log(JSON.parse(message.body));
-
-        if (type === 'GREETING') content = '입장';
-        else if (type === 'LEAVE') content = '퇴장';
-        else if (type === 'DENIED') {
-          // setConnect(false);
-          return;
-        } else {
-          content = JSON.parse(message.body).content;
-        }
-        const sender = JSON.parse(message.body).sender;
-
-        if (lastMessage === null || lastMessage !== messageId) {
-          setLastMessage(messageId);
-          setMessages((messages) => [messageId, sender, content]);
-        }
+        const gameMessage: GameMessage = JSON.parse(message.body);
+        const gameParticipant = gameMessage.participants;
+        const gamePlayersInfo = gameMessage.game.players;
+        const gameState = gameMessage.game.gameState;
+        const events = gameMessage.game.events;
+        const cardDict = gameMessage.game.cardDictionary;
+        console.log(gameParticipant);
+        console.log(gamePlayersInfo);
+        console.log(gameState);
+        console.log(events);
+        console.log(cardDict);
+        dispatch(
+          updatePlayersInfo({
+            myInfo: userInfo,
+            participants: gameParticipant,
+            players: gamePlayersInfo,
+          })
+        );
+        dispatch(updateGameState(gameState));
+        dispatch(updateEventTile(events));
+        dispatch(updateCardList(cardDict));
       },
       { ack: 'client.individualAck' }
     );
+
+    stompClientRef.current.subscribe('/sub/errors', (err) => {
+      console.log(err.body);
+    });
   };
 
   const startGamePublish = (gameRoomId: number) => {
@@ -110,7 +115,7 @@ const Websocket = () => {
     });
   };
 
-  const actionPublish = (gameRoomId: number, ActionObj: ActionProps) => {
+  const actionPublish = (gameRoomId: number, ActionObj: ActionMessageProps) => {
     if (!stompClientRef.current || !stompClientRef.current.connected) {
       console.log('Stomp client not connected, cannot publish message');
       return;
@@ -131,7 +136,7 @@ const Websocket = () => {
     });
   };
 
-  const exchangePublish = (gameRoomId: number, exchangeObj: ExchangeProps) => {
+  const exchangePublish = (gameRoomId: number, exchangeObj: ExchangeMessageProps) => {
     if (!stompClientRef.current || !stompClientRef.current.connected) {
       console.log('Stomp client not connected, cannot publish message');
       return;

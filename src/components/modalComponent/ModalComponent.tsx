@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalState, openModal, closeModal } from '../../redux/reducers/modalReducer';
+import { openModal, closeModal } from '../../redux/reducers/modalReducer';
+import { ModalState } from '../../interface/interfaces';
 
 export const ModalContainer = styled.div`
   position: absolute;

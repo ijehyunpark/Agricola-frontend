@@ -33,19 +33,25 @@ function RoomJoinModal({ roomId, roomTitle, timeset, setIsOpen, setSelectedRoomN
             <div>
               <span>방 이름 : {roomTitle}</span>
             </div>
-            <div>
+            {/* <div>
               <span>행동 선택 가능시간 : {timeset}</span>
-            </div>
+            </div> */}
             <R.RoomNickname>
               <span>닉네임</span>
-              <input id='username' type='text' placeholder='닉네임을 입력해주세요'></input>
+              <input
+                id='username'
+                type='text'
+                placeholder='닉네임을 입력해주세요'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setNickname(e.target.value);
+                }}
+              />
             </R.RoomNickname>
             <R.JoinDiv>
               <button
                 className='joinroom'
                 onClick={() => {
                   setIsOpen(false);
-                  // dispatch(incrementParticipant());
                   setSelectedRoomName(roomTitle);
                   dispatch(openModal('waitingModal'));
                 }}>

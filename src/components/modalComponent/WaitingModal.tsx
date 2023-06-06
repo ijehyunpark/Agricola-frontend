@@ -34,7 +34,7 @@ function WaitingModal({ greetingPublish, selectedRoomName, nickName, setIsFull }
       try {
         const fetchData = async () => {
           await axios
-            .get('http://20.214.220.69:8080/rooms', {
+            .get('http://20.214.76.230:8080/rooms', {
               withCredentials: true,
             })
             .then((res) => {

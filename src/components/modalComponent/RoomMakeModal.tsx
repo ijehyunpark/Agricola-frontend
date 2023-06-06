@@ -16,7 +16,6 @@ interface RoomMakeModalProps {
 function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps) {
   const [roomName, setRoomName] = useState<string>('');
   // const [actionTime, setActionTime] = useState<number>(60);
-  // const [userName, setUserName] = useState<number>('Player');
 
   const dispatch = useDispatch();
 
@@ -25,7 +24,7 @@ function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps)
       const submit = async () => {
         await axios
           .post(
-            'http://20.214.220.69:8080/rooms',
+            'http://20.214.76.230:8080/rooms',
             {
               name: roomName,
               capacity: 4,
@@ -35,7 +34,6 @@ function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps)
             }
           )
           .then((res) => {
-            // dispatch(incrementParticipant());
             setSelectedRoomName(roomName);
           });
       };
@@ -60,7 +58,7 @@ function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps)
               }}
             />
           </R.RoomName>
-          <R.RoomTimer>
+          {/* <R.RoomTimer>
             <span>행동 선택 가능시간</span>
             <select id='time' name='time'>
               <option value=''>골라</option>
@@ -69,10 +67,17 @@ function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps)
               <option value='90초'>90초</option>
               <option value='120초'>120초</option>
             </select>
-          </R.RoomTimer>
+          </R.RoomTimer> */}
           <R.RoomNickname>
             <span>닉네임</span>
-            <input id='username' type='text' placeholder='닉네임을 입력해주세요' />
+            <input
+              id='username'
+              type='text'
+              placeholder='닉네임을 입력해주세요'
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setNickname(e.target.value);
+              }}
+            />
           </R.RoomNickname>
           <R.MakerDiv>
             <button
