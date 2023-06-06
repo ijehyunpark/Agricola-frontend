@@ -1,18 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Participant, Player, PlayerReducerState, PlayerResources, ResourceType } from '../../interface/interfaces';
 
-interface PlayerStatus {
-  wood: number;
-  clay: number;
-  stone: number;
-  reed: number;
-  grain: number;
-  vegetable: number;
-  food: number;
-  hungerToken: number;
-  sheep: number;
-  wildboar: number;
-  cow: number;
-  cattle: number; //외양간
-  fence: number;
-  family: number;
-}
+const initialState: PlayerReducerState = {
+  myInfo: {
+    id: 0,
+    username: '',
+  },
+  participants: [],
+  players: [],
+};
+
+export const playerSlice = createSlice({
+  name: 'player',
+  initialState,
+  reducers: {
+    updatePlayersInfo: (state, action: PayloadAction<PlayerReducerState>) => {
+      state.myInfo = action.payload.myInfo;
+      state.participants = action.payload.participants;
+      state.players = action.payload.players;
+    },
+  },
+});
+
+export const { updatePlayersInfo } = playerSlice.actions;
