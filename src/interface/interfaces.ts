@@ -278,3 +278,19 @@ export interface JobProps {
   JobType: string;
   numOfJob: number | string;
 }
+
+export interface ImgSrcProps {
+  '양 시장': string;
+  울타리: string;
+  '곡식 활용': string;
+  '급하지 않은 가족 늘리기': string;
+  '서부 채석장': string;
+  '집 개조': string;
+  '돼지 시장': string;
+  '채소 종자': string;
+  '소 시장': string;
+  '동부 채석장': string;
+  밭농사: string;
+  '급한 가족 늘리기': string;
+  '농장 개조': string;
+}

@@ -5,6 +5,8 @@ import SubCardModal from './SubCardModal';
 import JobCardModal from './JobCardModal';
 import GameStatusModal from './GameStatusModal';
 import FinalScoreModal from './FinalScoreModal';
+import ResourceExchangeModal from './ResourceExchangeModal';
+import FoodSelectionModal from './FoodSelectionModal';
 
 import { RootState } from '../../redux/store';
 
@@ -19,6 +21,8 @@ function InGameModalController() {
       {isOpen['jobCardModal'] ? <JobCardModal /> : null}
       {isOpen['gameStatusModal'] ? <GameStatusModal /> : null}
       {isOpen['finalScoreModal'] ? <FinalScoreModal /> : null}
+      {isOpen['resourceExchangeModal'] ? <ResourceExchangeModal /> : null}
+      {isOpen['foodSelectionModal'] ? <FoodSelectionModal /> : null}
     </>
   );
 }
