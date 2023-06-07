@@ -84,8 +84,8 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/wood'} actionPublish={actionPublish} event={findEventWithId(events, 26)} quantity={'2'} />
           </B.TileFrame>
           <B.TileFrame key='roomExtend_meeting'>
-            <InitialActionTile actionName={'농장확장'} actionType={'house/Extend'} iconWidth={'120px'} iconHeight={'60px'} />
-            <InitialActionTile actionName={'회합장소'} actionType={'etc/groupPlace'} iconWidth={'96px'} iconHeight={'40px'} />
+            <InitialActionTile actionName={'농장확장'} actionType={'tile/extend'} iconWidth={'120px'} iconHeight={'60px'} />
+            <InitialActionTile actionName={'회합장소'} actionType={'tile/groupPlace'} iconWidth={'96px'} iconHeight={'40px'} />
           </B.TileFrame>
           <B.TileFrame key='round1'>
             <RoundResourceTile resourceName={'양'} resourceType={'animal/sheep'} numOfResource={1} />
@@ -103,7 +103,6 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/clay'} actionPublish={actionPublish} event={findEventWithId(events, 28)} quantity={'2'} />
           </B.TileFrame>
           <B.TileFrame key='seed_farm'>
-            {/* <InitialResourceTile resourceName={'곡식종자'} resourceType={'resource/grain'} numOfResource={1} /> */}
             <BasicTile roomId={roomInfo.id} tileImgSrc={'resource/grain'} actionPublish={actionPublish} event={findEventWithId(events, 3)} quantity={'+1'} />
             <InitialActionTile actionName={'농지'} actionType={'tile/farm'} />
           </B.TileFrame>
