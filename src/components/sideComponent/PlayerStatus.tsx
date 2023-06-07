@@ -25,6 +25,11 @@ function PlayerStatus() {
           if (element.petRoom !== null && element.petRoom.animal.name === animalType) {
             count += element.petRoom.animal.count;
           }
+          if (element.fieldType === 'BARN' && element.animal !== undefined) {
+            if (element.animal.name === animalType) {
+              count += element.animal.count;
+            }
+          }
         }
       });
     });

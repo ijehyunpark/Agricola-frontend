@@ -112,7 +112,8 @@ type PetRoom = null | {
 export interface PlayerBoardTile {
   petRoom: PetRoom;
   fieldType: FieldType;
-  residents: Resident[];
+  residents?: Resident[];
+  animal?: Animal;
   residentNumber: number;
 }
 
