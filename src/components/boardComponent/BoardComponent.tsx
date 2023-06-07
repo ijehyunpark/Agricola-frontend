@@ -141,14 +141,13 @@ export const Card = styled.div`
   border: 1px solid black;
 `;
 
-
 export const Home1 = styled.div`
   position: relative;
   grid-area: home;
 
   &::after,
   &::before {
-    content: "11";
+    content: '11';
     position: absolute;
     background-color: #000;
   }
@@ -183,7 +182,7 @@ export const Home1 = styled.div`
     }
   }
 
-  &:nth-child(n+11) {
+  &:nth-child(n + 11) {
     // Top border for the Homes in the last row
     &::before {
       top: -5px;
@@ -192,7 +191,7 @@ export const Home1 = styled.div`
     }
   }
 
-  &:nth-child(5n+1) {
+  &:nth-child(5n + 1) {
     // Left border for the Homes in the first column
     &::after {
       left: -5px;
@@ -216,7 +215,6 @@ export const Home = styled.div`
   height: 80px;
   border: 1px solid black;
   font-size: ${(props) => props.theme.fontSize.base};
-  
 `;
 
 export const HomeTile = styled.div`
@@ -226,7 +224,6 @@ export const HomeTile = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  onClick: () => void;
 `;
 
 export const HomeContentWrapper = styled.div`
@@ -273,7 +270,6 @@ export const JobBtnWrapper = styled.div`
   border-radius: 7px;
 `;
 
-
 export const JobDetails = styled.div`
   width: 200px;
   height: 300px;
@@ -304,17 +300,16 @@ export const FenceBtnColumn = styled.button`
   font-size: ${(props) => props.theme.fontSize.base};
   border-color: transparent;
   border-radius: 7px;
-  background-color: ${props => props.color};  
+  background-color: ${(props) => props.color};
 `;
 
 export const FenceBtnRow = styled.button`
-  
   width: 80px;
   height: 10px;
   font-size: ${(props) => props.theme.fontSize.base};
   border-color: transparent;
   border-radius: 7px;
-  background-color: ${props => props.color};  
+  background-color: ${(props) => props.color};
 `;
 
 export const FenceContentWrapper = styled.div`
@@ -330,4 +325,3 @@ export const FenceContentWrapper = styled.div`
   gap: 20px;
   border-radius: 7px;
 `;
-
