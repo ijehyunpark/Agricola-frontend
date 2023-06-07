@@ -247,3 +247,34 @@ export interface TileProps {
   event: Event | undefined;
   quantity?: string;
 }
+
+export interface HomeProps {
+  HomeName: string;
+  HomeType: number;
+  ID: number;
+  handleClick?: () => void; // Add this line
+}
+
+export interface HomeBtnProps {
+  onClick: () => void; // Add this line
+}
+
+export interface FenceBtnRowProps {
+  color: string;
+  onClick: () => void;
+  ID: number;
+}
+
+export interface FenceBtnColumnProps {
+  color: string;
+  onClick: () => void;
+  ID: number;
+}
+
+export type Point = { row: number; col: number };
+
+export interface JobProps {
+  JobName: string;
+  JobType: string;
+  numOfJob: number | string;
+}
