@@ -6,6 +6,8 @@ import { closeModal } from '../../redux/reducers/modalReducer';
 import { incrementParticipant, decrementParticipant, saveRoomInfo } from '../../redux/reducers/roomReducer';
 import { RootState } from '../../redux/store';
 
+import URL from '../../socket/url';
+
 interface WaitingModalProps {
   greetingPublish: (gameRoomId: number, name: string) => void;
   selectedRoomName: string;
@@ -34,7 +36,7 @@ function WaitingModal({ greetingPublish, selectedRoomName, nickName, setIsFull }
       try {
         const fetchData = async () => {
           await axios
-            .get('http://20.214.76.230:8080/rooms', {
+            .get(`http://${URL}/rooms`, {
               withCredentials: true,
             })
             .then((res) => {

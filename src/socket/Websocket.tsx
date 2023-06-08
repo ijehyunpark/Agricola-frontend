@@ -1,25 +1,24 @@
 // StompWebsocket.tsx
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { updatePlayersInfo } from '../redux/reducers/playerReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { updatePlayersInfo, updateMyInfo } from '../redux/reducers/playerReducer';
 import { updateGameState } from '../redux/reducers/gameStateReducer';
 import { updateEventTile } from '../redux/reducers/eventTileReducer';
 import { updateCardList } from '../redux/reducers/cardReducer';
+
+import { RootState } from '../redux/store';
 
 import { Client, IMessage, Stomp } from '@stomp/stompjs';
 import RoomList from '../components/roomlistComponent/RoomList';
 import GameScreen from '../components/gameScreen/GameScreen';
 
-import { ActionMessageProps, ExchangeMessageProps, GameMessage, Participant, GameState, Event, CardDictionary } from '../interface/interfaces';
+import { ActionMessageProps, ExchangeMessageProps, GameMessage, Participant } from '../interface/interfaces';
 
-const SOCKET_URL = 'ws://20.214.76.230:8080/agricola';
+import URL from './url';
 
 const Websocket = () => {
   const stompClientRef = useRef<Client | null>(null);
-  const [userInfo, setUserInfo] = useState<Participant>({
-    username: 'player',
-    id: 0,
-  });
+  const playerId = useSelector((state: RootState) => state.player.myInfo.id);
   // const [messages, setMessages] = useState<string[] | null>([]);
   // const [lastMessage, setLastMessage] = useState<string | null>(null);
   const [isFull, setIsFull] = useState<boolean>(false);
@@ -27,7 +26,7 @@ const Websocket = () => {
 
   useEffect(() => {
     stompClientRef.current = new Client({
-      brokerURL: SOCKET_URL,
+      brokerURL: `ws://${URL}/agricola`,
       debug: (str) => {
         console.log('debug: ' + str);
       },
@@ -65,8 +64,7 @@ const Websocket = () => {
 
     stompClientRef.current.subscribe('/user/queue/message', (message) => {
       const response: Participant = JSON.parse(message.body);
-      console.log('---------response---------');
-      setUserInfo({ ...userInfo, ...response });
+      dispatch(updateMyInfo(response));
     });
 
     stompClientRef.current.subscribe(
@@ -79,21 +77,26 @@ const Websocket = () => {
         const gameState = gameMessage.game.gameState;
         const events = gameMessage.game.events;
         const cardDict = gameMessage.game.cardDictionary;
-        console.log(gameParticipant);
-        console.log(gamePlayersInfo);
-        console.log(gameState);
-        console.log(events);
-        console.log(cardDict);
+
+        // console.log(gameParticipant);
+        // console.log(gamePlayersInfo);
+        // console.log(gameState);
+        // console.log(events);
+        // console.log(cardDict);
         dispatch(
           updatePlayersInfo({
-            myInfo: userInfo,
             participants: gameParticipant,
             players: gamePlayersInfo,
           })
         );
         dispatch(updateGameState(gameState));
         dispatch(updateEventTile(events));
-        dispatch(updateCardList(cardDict));
+        dispatch(
+          updateCardList({
+            dict: cardDict,
+            playerId: playerId,
+          })
+        );
       },
       { ack: 'client.individualAck' }
     );

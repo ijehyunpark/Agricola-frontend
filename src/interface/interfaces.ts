@@ -1,12 +1,15 @@
 import { type } from 'os';
+import { StackResource } from './../components/boardComponent/BoardComponent';
+import EquipmentModal from './../components/modalComponent/EquipmentModal';
 
 export interface ModalState {
   roomMakeModal: boolean;
   waitingModal: boolean;
   // roomJoinModal: boolean;
   majorCardModal: boolean;
-  subCardModal: boolean;
-  jobCardModal: boolean;
+  // subCardModal: boolean;
+  myCardModal: boolean;
+  equipmentModal: boolean;
   gameStatusModal: boolean;
   resourceExchangeModal: boolean;
   foodSelectionModal: boolean;
@@ -18,15 +21,27 @@ export interface ModalAction {
   payload: keyof ModalState;
 }
 
+export interface InGameModalControllerProps {
+  actionPublish: ActionPublish;
+  exchangePublish: ExchangePublish;
+}
+
+export interface EquipmentModalProps {
+  actionPublish: ActionPublish;
+}
+
 export interface Participant {
   id: number;
   username: string;
 }
 
-export interface PlayerReducerState {
-  myInfo: Participant;
+export interface UpdateUserInfo {
   participants: Participant[];
   players: Player[];
+}
+
+export interface PlayerReducerState extends UpdateUserInfo {
+  myInfo: Participant;
 }
 
 type GameProgress = 'PlayerAction' | 'Harvest' | 'Finish';
@@ -157,19 +172,75 @@ export interface Event {
   playerId: number | null;
 }
 
-type CardType = 'OCCUPATION' | 'MINOR' | 'MAJOR';
-interface CardAttr {
+export type CardType = 'OCCUPATION' | 'MINOR' | 'MAJOR';
+export interface CardAttr {
+  name: string;
   cardType: CardType;
-  cardId: number;
+  cardID: number;
   bonusPoint: number;
-  ingredients: ResourceType[];
-  resourcesToFoodAnyTime: ResourceType[];
-  bakeEfficiency: number;
+  description: string;
+  resourcesToFoodAnyTime?: ResourceType[];
 }
 
-export interface CardDictionary {
-  ownerDict: {};
-  cardDictList: CardAttr[];
+export interface MajorAttr extends CardAttr {
+  bakeEfficiency?: number;
+  ingredients: ResourceType[];
+}
+
+export interface MinorAttr extends CardAttr {
+  preconditionCardType: null | CardType;
+  minCardNum: number;
+  resourceToFoodHarvest?: ResourceType;
+  ingredients: ResourceType[];
+  bonusResource?: ResourceType;
+  bakeEfficiency?: number;
+}
+
+export interface OccupationAttr extends CardAttr {
+  resourceToFoodHarvest?: ResourceType;
+  playerRequirement: number;
+}
+
+export interface PlayerHand {
+  cardId: number;
+  playerId: number;
+}
+
+export interface UnclassifiedCardDictionary {
+  cardDict: (MajorAttr & MinorAttr & OccupationAttr)[];
+  ownerDict: [];
+  playerHand: PlayerHand[];
+}
+
+export interface ClassifiedCardDictionary {
+  majorDict: MajorAttr[];
+  minorDict: MinorAttr[];
+  occupationDict: OccupationAttr[];
+  ownerDict: PlayerHand[];
+  playerHand: PlayerHand[];
+}
+
+export interface UpdateCardDict {
+  dict: UnclassifiedCardDictionary;
+  playerId: number;
+}
+
+export interface SelectableCardProps extends UnselectableCardProps {
+  roomId: number;
+  eventId: number;
+  cardId: number;
+  // name: string;
+  // ingredients: ResourceType[];
+  // bonusPoint: number;
+  // description: string;
+  actionPublish: ActionPublish;
+}
+
+export interface UnselectableCardProps {
+  name: string;
+  ingredients?: ResourceType[];
+  bonusPoint: number;
+  description: string;
 }
 
 export interface Game {
@@ -178,7 +249,7 @@ export interface Game {
   startingPlayerId: string;
   players: Player[];
   events: Event[];
-  cardDictionary: CardDictionary;
+  cardDictionary: UnclassifiedCardDictionary;
 }
 
 export interface GameMessage {
@@ -199,7 +270,7 @@ export interface Acts {
 
 interface Act {
   use: boolean;
-  acts: null | Acts;
+  acts: null | number | Acts;
 }
 
 interface ExchangeResource {
@@ -223,10 +294,9 @@ export interface ExchangeMessageProps {
   exchange: ExchangeInfo[];
 }
 
-type ActionPublish = (gameRoomId: number, ActionObj: ActionMessageProps) => void;
-type ExchangePublish = (gameRoomId: number, exchangeObj: ExchangeMessageProps) => void;
-type StartGamePublish = (gameRoomId: number) => void;
-
+export type ActionPublish = (gameRoomId: number, ActionObj: ActionMessageProps) => void;
+export type ExchangePublish = (gameRoomId: number, exchangeObj: ExchangeMessageProps) => void;
+export type StartGamePublish = (gameRoomId: number) => void;
 export type PublishActionFormat = {
   eventId: number;
 };
@@ -247,6 +317,13 @@ export interface TileProps {
   actionPublish: ActionPublish;
   event: Event | undefined;
   quantity?: string;
+}
+
+export interface RoundTileProps {
+  roomId: number;
+  actionPublish: ActionPublish;
+  event: Event | undefined;
+  openRound: number;
 }
 
 export interface HomeProps {

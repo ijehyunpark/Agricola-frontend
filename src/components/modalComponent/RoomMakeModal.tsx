@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import * as R from '../roomlistComponent/RoomComponent';
 import * as M from './ModalComponent';
 
+import URL from '../../socket/url';
+
 interface RoomMakeModalProps {
   setSelectedRoomName: React.Dispatch<React.SetStateAction<string>>;
   setNickname: React.Dispatch<React.SetStateAction<string>>;
@@ -24,7 +26,7 @@ function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps)
       const submit = async () => {
         await axios
           .post(
-            'http://20.214.76.230:8080/rooms',
+            `http://${URL}/rooms`,
             {
               name: roomName,
               capacity: 4,

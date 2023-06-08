@@ -6,6 +6,9 @@ import * as B from '../boardComponent/BoardComponent';
 import * as M from '../modalComponent/ModalComponent';
 import BasicTile from '../boardComponent/boardTile/BasicTile';
 import StackTile from '../boardComponent/boardTile/StackTile';
+
+import SheepTile from '../boardComponent/boardTile/firstCycleTile/SheepTile';
+import EquipmentTile from '../boardComponent/boardTile/firstCycleTile/EquipmentTile';
 import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
 import { gridXLg, gridLg } from './Grid';
 
@@ -87,10 +90,10 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
             <InitialActionTile actionName={'농장확장'} actionType={'tile/extend'} iconWidth={'120px'} iconHeight={'60px'} />
             <InitialActionTile actionName={'회합장소'} actionType={'tile/groupPlace'} iconWidth={'96px'} iconHeight={'40px'} />
           </B.TileFrame>
-          <B.TileFrame key='round1'>
-            <RoundResourceTile resourceName={'양'} resourceType={'animal/sheep'} numOfResource={1} />
+          <B.TileFrame key='round1'></B.TileFrame>
+          <B.TileFrame key='round2'>
+            <EquipmentTile />
           </B.TileFrame>
-          <B.TileFrame key='round2'>3</B.TileFrame>
           <B.TileFrame key='round5'>4</B.TileFrame>
           <B.TileFrame key='round8'>5</B.TileFrame>
           <B.TileFrame key='round10'>6</B.TileFrame>
@@ -152,7 +155,7 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
           </B.TileFrame>
         </GridLayout>
       </B.BoardFrame>
-      <InGameModalController />
+      <InGameModalController actionPublish={actionPublish} exchangePublish={exchangePublish} />
     </B.Background>
   );
 }

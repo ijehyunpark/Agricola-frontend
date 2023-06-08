@@ -17,11 +17,12 @@ function CardBtns() {
   return (
     <BtnAlingColumn>
       <B.CardBtn onClick={() => dispatch(openModal('majorCardModal'))}>주요 설비</B.CardBtn>
-      <B.CardBtn onClick={() => dispatch(openModal('subCardModal'))}>보조 설비</B.CardBtn>
-      <B.CardBtn onClick={() => dispatch(openModal('jobCardModal'))}>직업 카드</B.CardBtn>
+      {/* <B.CardBtn onClick={() => dispatch(openModal('subCardModal'))}>보조 설비</B.CardBtn> */}
+      <B.CardBtn onClick={() => dispatch(openModal('myCardModal'))}>나의 카드</B.CardBtn>
+      <B.CardBtn onClick={() => dispatch(openModal('equipmentModal'))}>설비 카드 확인</B.CardBtn>
       {/* <B.CardBtn onClick={() => dispatch(openModal('finalScoreModal'))}>점수판</B.CardBtn> */}
-      <B.CardBtn onClick={() => dispatch(openModal('resourceExchangeModal'))}>자원교환</B.CardBtn>
-      <B.CardBtn onClick={() => dispatch(openModal('foodSelectionModal'))}>음식 제작</B.CardBtn>
+      {/* <B.CardBtn onClick={() => dispatch(openModal('resourceExchangeModal'))}>자원교환</B.CardBtn>
+      <B.CardBtn onClick={() => dispatch(openModal('foodSelectionModal'))}>음식 제작</B.CardBtn> */}
     </BtnAlingColumn>
   );
 }

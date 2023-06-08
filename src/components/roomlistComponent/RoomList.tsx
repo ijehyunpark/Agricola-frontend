@@ -12,6 +12,8 @@ import Room from './Room';
 import RoomLoading from './RoomLoading';
 import WaitingModal from '../modalComponent/WaitingModal';
 
+import URL from '../../socket/url';
+
 interface RoomListProps {
   greetingPublish: (gameRoomId: number, name: string) => void;
   setIsFull: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,7 +37,7 @@ function RoomList({ greetingPublish, setIsFull }: RoomListProps) {
       try {
         const fetchData = async () => {
           await axios
-            .get('http://20.214.76.230:8080/rooms', {
+            .get(`http://${URL}/rooms`, {
               withCredentials: true,
             })
             .then((res) => {
