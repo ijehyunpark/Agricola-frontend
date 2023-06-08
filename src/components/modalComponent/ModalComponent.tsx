@@ -200,6 +200,110 @@ export const CountText = styled.span`
   text-align: center;
 `;
 
+//ResourceExchangeModal.tsx
+export const RXScreen = styled.div`
+  width: 500px;
+  height: 350px;
+  background-color: #eeebeb;
+`;
+export const Name = styled.h2`
+  line-height: 1.8;
+  font-size: 20px;
+  height: 30px;
+  text-align: center;
+  margin: 0 auto; 
+`
+export const ItemSet = styled.div`
+  background-color: #D9D9D9;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  border: 1px solid black;
+  align-items: center;
+  
+`
+export const Item = styled.div`
+  height: 30px;
+  display: flex;
+  align-items: center;
+  img{
+    margin-right: 5px;
+    height: 20px;
+  }
+  & >
+  
+`
+export const ExchangeItems = styled.div`
+  background-color: #D9D9D9;
+  margin: 10px;
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  border: 1px solid black;
+  align-items: center;
+`
+export const ExchageItem = styled.div`
+  margin: 10px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  img{
+    height: 30px;
+    margin: 2.5px;
+  }
+  a{
+    margin: 2.5px;
+  }
+`
+export const HaveFood = styled.div`
+  height: 50px; 
+  display: flex;
+  align-items: center;
+  img{
+    height: 30px;
+    margin: 2.5px;
+  }
+  a{
+    margin: 2.5px;
+  }
+`
+export const BtDiv = styled.div`
+  float: right;
+  margin-right: 10px;
+  button{
+    height: 25px;
+  }
+`
+//FoodSelectionModal
+export const FSScreen = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 500px;
+  height: 100px;
+  background-color: #eeebeb;
+  button{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    img{
+      height: 18px;
+    }
+  }
+`;
+
 type Props = {
   children: React.ReactNode;
   modalType: keyof ModalState;
