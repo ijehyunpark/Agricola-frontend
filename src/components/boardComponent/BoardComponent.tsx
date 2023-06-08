@@ -263,11 +263,25 @@ export const JobBtnWrapper = styled.div`
   display: flex;
   width: 650px;
   height: 120px;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  justify-content: space-between;
   overflow-x: auto;
   background-color: white;
+  padding: 0 5px;
   border-radius: 7px;
+
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #a1a1a1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ddd;
+    margin: 0px 6px;
+  }
 `;
 
 export const JobDetails = styled.div`

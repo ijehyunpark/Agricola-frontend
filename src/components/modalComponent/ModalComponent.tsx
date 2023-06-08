@@ -48,7 +48,7 @@ export const CardModalGrid = styled.div<{ n: number }>`
   grid-template-rows: repeat(2, 280px);
   grid-gap: 10px;
   place-items: center;
-  background-image: url('img/card/CardTable.svg');
+  background-image: url('img/card/cardTable.svg');
   background-position: center;
   background-size: cover;
   border-radius: 5px;

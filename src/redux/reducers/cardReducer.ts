@@ -1,18 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CardDictionary } from '../../interface/interfaces';
+import { UnclassifiedCardDictionary, ClassifiedCardDictionary, UpdateCardDict, PlayerHand, MinorAttr, OccupationAttr, CardType } from '../../interface/interfaces';
 
-const initialState: CardDictionary = {
-  ownerDict: {},
-  cardDictList: [],
+const initialState: ClassifiedCardDictionary = {
+  majorDict: [],
+  minorDict: [],
+  occupationDict: [],
+  ownerDict: [],
+  playerHand: [],
 };
 
 export const cardSlice = createSlice({
-  name: 'player',
+  name: 'card',
   initialState,
   reducers: {
-    updateCardList: (state: CardDictionary, action: PayloadAction<CardDictionary>) => {
-      state.ownerDict = action.payload.ownerDict;
-      state.cardDictList = action.payload.cardDictList;
+    updateCardList: (state: ClassifiedCardDictionary, action: PayloadAction<UpdateCardDict>) => {
+      state.ownerDict = action.payload.dict.ownerDict;
+      state.majorDict = action.payload.dict.cardDict.filter((card) => card.cardType === 'MAJOR');
+      state.minorDict = action.payload.dict.cardDict.filter((card) => card.cardType === 'MINOR');
+      state.occupationDict = action.payload.dict.cardDict.filter((card) => card.cardType === 'OCCUPATION');
+      state.playerHand = action.payload.dict.playerHand;
     },
   },
 });

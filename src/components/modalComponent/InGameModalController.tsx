@@ -1,28 +1,27 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import MajorCardModal from './MajorCardModal';
-import SubCardModal from './SubCardModal';
-import JobCardModal from './JobCardModal';
+import MyCardModal from './MyCardModal';
 import GameStatusModal from './GameStatusModal';
 import FinalScoreModal from './FinalScoreModal';
 import ResourceExchangeModal from './ResourceExchangeModal';
 import FoodSelectionModal from './FoodSelectionModal';
+import EquipmentModal from './EquipmentModal';
+import { InGameModalControllerProps } from '../../interface/interfaces';
 
-import { RootState } from '../../redux/store';
-
-function InGameModalController() {
+function InGameModalController({ actionPublish, exchangePublish }: InGameModalControllerProps) {
   const isOpen = useSelector((state: RootState) => state.modal);
-  // const modalList = ['majorCardModal', 'subCardModal', 'jobCardModal', 'gameStatusModal', 'resourceExchangeModal', 'foodSelectionModal', 'finalScoreBoardModal'];
 
   return (
     <>
       {isOpen['majorCardModal'] ? <MajorCardModal /> : null}
-      {isOpen['subCardModal'] ? <SubCardModal /> : null}
-      {isOpen['jobCardModal'] ? <JobCardModal /> : null}
+      {isOpen['myCardModal'] ? <MyCardModal /> : null}
       {isOpen['gameStatusModal'] ? <GameStatusModal /> : null}
       {isOpen['finalScoreModal'] ? <FinalScoreModal /> : null}
       {isOpen['resourceExchangeModal'] ? <ResourceExchangeModal /> : null}
       {isOpen['foodSelectionModal'] ? <FoodSelectionModal /> : null}
+      {isOpen['equipmentModal'] ? <EquipmentModal actionPublish={actionPublish} /> : null}
     </>
   );
 }
