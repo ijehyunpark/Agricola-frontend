@@ -54,7 +54,7 @@ function WaitingModal({ greetingPublish, selectedRoomName, nickName, setIsFull }
         console.log(err);
       }
     };
-    const refresh = setInterval(getRoomList, 1000);
+    const refresh = setInterval(getRoomList, 200);
     return () => {
       clearInterval(refresh);
     };

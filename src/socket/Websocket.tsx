@@ -33,10 +33,6 @@ const Websocket = () => {
 
       onConnect: () => {
         console.log('Connected to Stomp Websocket server');
-
-        // stompClientRef.current?.subscribe('/topic/messages', (message: IMessage) => {
-        //   console.log('Received message:', message);
-        // });
       },
       reconnectDelay: 5000,
       heartbeatIncoming: 4000,
@@ -64,7 +60,15 @@ const Websocket = () => {
 
     stompClientRef.current.subscribe('/user/queue/message', (message) => {
       const response: Participant = JSON.parse(message.body);
-      dispatch(updateMyInfo(response));
+      dispatch(
+        updateMyInfo({
+          ...response,
+          SHEEP: 0,
+          WILD_BOAR: 0,
+          CATTLE: 0,
+          residentCount: 2,
+        })
+      );
     });
 
     stompClientRef.current.subscribe(
@@ -77,12 +81,6 @@ const Websocket = () => {
         const gameState = gameMessage.game.gameState;
         const events = gameMessage.game.events;
         const cardDict = gameMessage.game.cardDictionary;
-
-        // console.log(gameParticipant);
-        // console.log(gamePlayersInfo);
-        // console.log(gameState);
-        // console.log(events);
-        // console.log(cardDict);
         dispatch(
           updatePlayersInfo({
             participants: gameParticipant,

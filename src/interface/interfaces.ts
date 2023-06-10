@@ -1,13 +1,8 @@
-import { type } from 'os';
-import { StackResource } from './../components/boardComponent/BoardComponent';
-import EquipmentModal from './../components/modalComponent/EquipmentModal';
-
 export interface ModalState {
   roomMakeModal: boolean;
   waitingModal: boolean;
-  // roomJoinModal: boolean;
   majorCardModal: boolean;
-  // subCardModal: boolean;
+  occupationCardModal: boolean;
   myCardModal: boolean;
   equipmentModal: boolean;
   gameStatusModal: boolean;
@@ -26,7 +21,7 @@ export interface InGameModalControllerProps {
   exchangePublish: ExchangePublish;
 }
 
-export interface EquipmentModalProps {
+export interface APModalProps {
   actionPublish: ActionPublish;
 }
 
@@ -40,8 +35,25 @@ export interface UpdateUserInfo {
   players: Player[];
 }
 
+export interface PlayerAnimal {
+  SHEEP: number;
+  WILD_BOAR: number;
+  CATTLE: number;
+}
+
+export type KeyofAnimal = keyof PlayerAnimal;
+
+export interface UpdateAnimal {
+  count: number;
+  name: keyof PlayerAnimal;
+}
+
+export interface ResidentCount {
+  residentCount: number;
+}
+
 export interface PlayerReducerState extends UpdateUserInfo {
-  myInfo: Participant;
+  myInfo: Participant & PlayerAnimal & ResidentCount;
 }
 
 type GameProgress = 'PlayerAction' | 'Harvest' | 'Finish';
@@ -78,11 +90,12 @@ export interface PlayerResources {
   FAMILY: number;
 }
 
-export interface Residents {
-  p1: number;
-  p2: number;
-  p3: number;
-  p4: number;
+export interface PlayerBoardTile {
+  petRoom: PetRoom;
+  fieldType: FieldType;
+  residents?: Resident[];
+  animal?: Animal;
+  residentNumber: number;
 }
 
 export interface PlayerBoard {
@@ -114,8 +127,8 @@ interface Resident {
   played: boolean;
 }
 
-export type AnimalType = 'SHEEP' | 'WILE_BOAR' | 'CATTLE';
-interface Animal {
+export type AnimalType = 'SHEEP' | 'WILD_BOAR' | 'CATTLE';
+export interface Animal {
   name: string | null;
   count: number;
 }
@@ -123,14 +136,6 @@ interface Animal {
 type PetRoom = null | {
   animal: Animal;
 };
-
-export interface PlayerBoardTile {
-  petRoom: PetRoom;
-  fieldType: FieldType;
-  residents?: Resident[];
-  animal?: Animal;
-  residentNumber: number;
-}
 
 type DoType = 'ANDOR' | 'OR' | 'AFTER' | 'FINISH';
 type ActionType = 'STACK' | 'CULTIVATION' | 'BUILD' | 'UPGRADE' | 'BAKE' | 'STARTING' | 'PLACE' | 'BASIC' | 'ADOPT' | 'STACK_ANIMAL' | 'BUILD_ROOM' | 'BUILD_FENCE';
@@ -268,6 +273,10 @@ export interface Acts {
   improvementId: number[];
 }
 
+interface CardId {
+  cardId: number;
+}
+
 interface Act {
   use: boolean;
   acts: null | number | Acts;
@@ -309,6 +318,8 @@ export interface GameScreenProps {
 
 export type FindEventWithId = (events: { events: Event[] }, targetId: number) => Event | undefined;
 
+export type FindEventWithRound = (events: { events: Event[] }, targetRound: number) => Event | undefined;
+
 export interface TileProps {
   roomId: number;
   tileImgSrc: string;
@@ -319,11 +330,20 @@ export interface TileProps {
   quantity?: string;
 }
 
-export interface RoundTileProps {
+export interface CycleTileProps {
   roomId: number;
   actionPublish: ActionPublish;
   event: Event | undefined;
   openRound: number;
+}
+
+export interface RoundTileProps extends TileProps {
+  openRound: number;
+}
+
+export interface ResourceExchange {
+  playerId: number;
+  exchangePublish: ExchangePublish;
 }
 
 export interface HomeProps {
@@ -351,24 +371,13 @@ export interface FenceBtnColumnProps {
 
 export type Point = { row: number; col: number };
 
-export interface JobProps {
-  JobName: string;
-  JobType: string;
-  numOfJob: number | string;
+export interface CardViewProps {
+  cardName: string;
 }
 
-export interface ImgSrcProps {
-  '양 시장': string;
-  울타리: string;
-  '곡식 활용': string;
-  '급하지 않은 가족 늘리기': string;
-  '서부 채석장': string;
-  '집 개조': string;
-  '돼지 시장': string;
-  '채소 종자': string;
-  '소 시장': string;
-  '동부 채석장': string;
-  밭농사: string;
-  '급한 가족 늘리기': string;
-  '농장 개조': string;
+export interface Dummy {
+  name: string;
+  src: string;
+  iconWidth: string;
+  iconHeight: string;
 }

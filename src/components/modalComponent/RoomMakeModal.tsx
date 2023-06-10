@@ -60,16 +60,6 @@ function RoomMakeModal({ setSelectedRoomName, setNickname }: RoomMakeModalProps)
               }}
             />
           </R.RoomName>
-          {/* <R.RoomTimer>
-            <span>행동 선택 가능시간</span>
-            <select id='time' name='time'>
-              <option value=''>골라</option>
-              <option value='30초'>30초</option>
-              <option value='60초'>60초</option>
-              <option value='90초'>90초</option>
-              <option value='120초'>120초</option>
-            </select>
-          </R.RoomTimer> */}
           <R.RoomNickname>
             <span>닉네임</span>
             <input

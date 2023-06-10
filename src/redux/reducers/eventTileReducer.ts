@@ -19,4 +19,4 @@ export const eventSlice = createSlice({
   },
 });
 
-export const { updateEventTile } = eventSlice.actions;
+export const { updateEventTile, setLastEventId } = eventSlice.actions;

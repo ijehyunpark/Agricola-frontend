@@ -35,8 +35,9 @@ export const TileFrame = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
+  position: relative;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 export const Tile = styled.div`
@@ -54,6 +55,13 @@ export const FlipTile = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
+`;
+
+export const HarvestIcon = styled.img`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: -15px;
 `;
 
 export const TileName = styled.h3`
@@ -287,25 +295,9 @@ export const JobBtnWrapper = styled.div`
 export const JobDetails = styled.div`
   width: 200px;
   height: 300px;
-  background-color: #f0f0f0; // 设置背景颜色以使其可见
-  visibility: hidden; // 默认设置为隐藏
-  position: absolute; // 设置为绝对定位，以便它可以浮动在其它内容上方
-`;
-
-export const JobBtn = styled.button`
-  overflow: visible;
-  position: relative;
-  min-width: 100px;
-  width: 100px;
-  height: 80px;
-  font-size: ${(props) => props.theme.fontSize.base};
-  border-color: transparent;
-  border-radius: 7px;
-  margin-right: 10px;
-  margin-top: 10px;
-  &:hover ${JobDetails} {
-    visibility: visible;
-  }
+  background-color: #f0f0f0;
+  visibility: hidden;
+  position: absolute;
 `;
 
 export const FenceBtnColumn = styled.button`
@@ -327,15 +319,15 @@ export const FenceBtnRow = styled.button`
 `;
 
 export const FenceContentWrapper = styled.div`
-  position: relative; // 使用相对定位
+  position: relative;
   top: 10px;
   width: max-content;
   width: max-content;
   display: flex;
-  flex-direction: row; // 使子元素从右向左排列
+  flex-direction: row;
   align-items: center;
   background-color: white;
-  justify-content: flex-start; // 让子元素从容器的开始边界开始排列
+  justify-content: flex-start;
   gap: 20px;
   border-radius: 7px;
 `;

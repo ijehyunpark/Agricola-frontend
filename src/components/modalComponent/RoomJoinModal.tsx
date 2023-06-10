@@ -33,9 +33,6 @@ function RoomJoinModal({ roomId, roomTitle, timeset, setIsOpen, setSelectedRoomN
             <div>
               <span>방 이름 : {roomTitle}</span>
             </div>
-            {/* <div>
-              <span>행동 선택 가능시간 : {timeset}</span>
-            </div> */}
             <R.RoomNickname>
               <span>닉네임</span>
               <input

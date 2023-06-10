@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+export const CardView = styled.div`
+  overflow: visible;
+  position: relative;
+  min-width: 100px;
+  width: 100px;
+  height: 80px;
+  font-size: ${(props) => props.theme.fontSize.base};
+  border: 1px solid ${(props) => props.theme.colors.darkGray};
+  border-radius: 7px;
+  margin-right: 10px;
+  margin-top: 10px;
+`;
+
 export const SelectableCard = styled.div`
   position: relative;
   width: 134px;

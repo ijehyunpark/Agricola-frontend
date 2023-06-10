@@ -7,6 +7,17 @@ import { SelectableCardProps, UnselectableCardProps } from '../../interface/inte
 function SelectableOccupationCard({ roomId, eventId, cardId, name, bonusPoint, description, actionPublish }: SelectableCardProps) {
   const dispatch = useDispatch();
   const occupationCardClickEvent = () => {
+    console.log({
+      eventId: eventId,
+      acts: [
+        {
+          use: true,
+          acts: {
+            cardId: cardId,
+          },
+        },
+      ],
+    });
     actionPublish(roomId, {
       eventId: eventId,
       acts: [
@@ -16,7 +27,7 @@ function SelectableOccupationCard({ roomId, eventId, cardId, name, bonusPoint, d
         },
       ],
     });
-    dispatch(closeModal('equipmentModal'));
+    dispatch(closeModal('occupationCardModal'));
   };
   return (
     <C.SelectableCard onClick={occupationCardClickEvent}>

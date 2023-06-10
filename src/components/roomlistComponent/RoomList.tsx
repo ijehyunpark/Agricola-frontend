@@ -49,7 +49,7 @@ function RoomList({ greetingPublish, setIsFull }: RoomListProps) {
         console.log(err);
       }
     };
-    const refresh = setInterval(getRoomList, 2000);
+    const refresh = setInterval(getRoomList, 200);
     return () => {
       clearInterval(refresh);
     };

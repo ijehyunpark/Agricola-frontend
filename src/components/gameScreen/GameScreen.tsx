@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveRoomInfo } from '../../redux/reducers/roomReducer';
 import { RootState } from '../../redux/store';
+import { saveRoomInfo } from '../../redux/reducers/roomReducer';
 import * as B from '../boardComponent/BoardComponent';
 import * as M from '../modalComponent/ModalComponent';
 import BasicTile from '../boardComponent/boardTile/BasicTile';
 import StackTile from '../boardComponent/boardTile/StackTile';
+import PlaceTile from '../boardComponent/boardTile/PlaceTile';
 
-import SheepTile from '../boardComponent/boardTile/firstCycleTile/SheepTile';
-import EquipmentTile from '../boardComponent/boardTile/firstCycleTile/EquipmentTile';
+import FirstCycleTile from '../boardComponent/boardTile/firstCycleTile/FirstCycleTile';
+
+import DummyTile from '../boardComponent/boardTile/DummyTile';
 import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
 import { gridXLg, gridLg } from './Grid';
 
-import { InitialResourceTile, RoundResourceTile } from '../boardComponent/ResourceTile';
-import { InitialActionTile, RoundActionTile } from '../boardComponent/ActionTile';
 import CardBtns from '../boardComponent/CardBtns';
 import PlayerStatus from '../sideComponent/PlayerStatus';
 
 import InGameModalController from '../modalComponent/InGameModalController';
 
 import { HomeArea } from '../boardComponent/HomeTile';
-import { JobArea } from '../boardComponent/JobTile';
+import JobArea from '../boardComponent/JobArea';
 
-import { GameScreenProps, Event, FindEventWithId } from '../../interface/interfaces';
+import { GameScreenProps, Event, FindEventWithId, FindEventWithRound } from '../../interface/interfaces';
 
 function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameScreenProps) {
   const marginTuple: [number, number] = [0, 0];
@@ -76,10 +76,13 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
     return events.events.find((event) => event.id === targetId);
   };
 
+  const findEventWithRound: FindEventWithRound = (events, targetRound) => {
+    return events.events.find((event) => event.round === targetRound);
+  };
+
   return (
     <B.Background>
       <B.BoardFrame>
-        {/* <StartBtns /> */}
         <GridLayout className='layout' layout={gridLg} {...GridLayoutProps}>
           {/* row1 */}
           <B.TileFrame key='bush_forest'>
@@ -87,18 +90,36 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/wood'} actionPublish={actionPublish} event={findEventWithId(events, 26)} quantity={'2'} />
           </B.TileFrame>
           <B.TileFrame key='roomExtend_meeting'>
-            <InitialActionTile actionName={'농장확장'} actionType={'tile/extend'} iconWidth={'120px'} iconHeight={'60px'} />
-            <InitialActionTile actionName={'회합장소'} actionType={'tile/groupPlace'} iconWidth={'96px'} iconHeight={'40px'} />
+            <DummyTile name={'농장확장'} src={'tile/extend'} iconWidth={'48px'} iconHeight={'48px'} />
+            <DummyTile name={'회합장소'} src={'tile/groupPlace'} iconWidth={'96px'} iconHeight={'40px'} />
           </B.TileFrame>
-          <B.TileFrame key='round1'></B.TileFrame>
+          <B.TileFrame key='round1'>
+            <FirstCycleTile roomId={roomInfo.id} actionPublish={actionPublish} event={findEventWithRound(events, 1)} openRound={1} />
+          </B.TileFrame>
           <B.TileFrame key='round2'>
-            <EquipmentTile />
+            <FirstCycleTile roomId={roomInfo.id} actionPublish={actionPublish} event={findEventWithRound(events, 2)} openRound={2} />
           </B.TileFrame>
-          <B.TileFrame key='round5'>4</B.TileFrame>
-          <B.TileFrame key='round8'>5</B.TileFrame>
-          <B.TileFrame key='round10'>6</B.TileFrame>
-          <B.TileFrame key='round12'>7</B.TileFrame>
-          <B.TileFrame key='round14'>8</B.TileFrame>
+          <B.TileFrame key='round5'>
+            {/* <DummyTile name={'집 개조'} src={'tile/houseRemodeling'} iconWidth={'96px'} iconHeight={'144px'} /> */}
+            <B.TileBack>라운드 5</B.TileBack>
+          </B.TileFrame>
+          <B.TileFrame key='round8'>
+            {/* <DummyTile name={'돼지 시장'} src={'animal/wildboar'} iconWidth={'24px'} iconHeight={'24px'} /> */}
+            <B.TileBack>라운드 8</B.TileBack>
+          </B.TileFrame>
+          <B.TileFrame key='round10'>
+            {/* <DummyTile name={'동부 채석장'} src={'resource/stone'} iconWidth={'24px'} iconHeight={'24px'} /> */}
+            <B.TileBack>라운드 10</B.TileBack>
+          </B.TileFrame>
+          <B.TileFrame key='round12'>
+            {/* <DummyTile name={'급한 가족 늘리기'} src={'tile/fastFamilyMaking_t'} iconWidth={'120px'} iconHeight={'72px'} /> */}
+            <B.TileBack>라운드 12</B.TileBack>
+          </B.TileFrame>
+          <B.TileFrame key='round14'>
+            {/* <DummyTile name={'농장 개조'} src={'tile/farmRemodeling'} iconWidth={'96px'} iconHeight={'132px'} /> */}
+            <B.TileBack>라운드 14</B.TileBack>
+            <B.HarvestIcon src='img/resource/harvest.svg' />
+          </B.TileFrame>
 
           {/* row2 */}
           <B.TileFrame key='resource_clay'>
@@ -107,17 +128,34 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
           </B.TileFrame>
           <B.TileFrame key='seed_farm'>
             <BasicTile roomId={roomInfo.id} tileImgSrc={'resource/grain'} actionPublish={actionPublish} event={findEventWithId(events, 3)} quantity={'+1'} />
-            <InitialActionTile actionName={'농지'} actionType={'tile/farm'} />
+            <DummyTile name={'농지'} src={'tile/farm'} iconWidth={'24px'} iconHeight={'24px'} />
           </B.TileFrame>
           <B.TileFrame key='forest2_soil'>
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/wood'} actionPublish={actionPublish} event={findEventWithId(events, 7)} quantity={'3'} />
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/clay'} actionPublish={actionPublish} event={findEventWithId(events, 8)} quantity={'1'} />
           </B.TileFrame>
-          <B.TileFrame key='round3'>13</B.TileFrame>
-          <B.TileFrame key='round6'>14</B.TileFrame>
-          <B.TileFrame key='round9'>15</B.TileFrame>
-          <B.TileFrame key='round11'>16</B.TileFrame>
-          <B.TileFrame key='round13'>17</B.TileFrame>
+          <B.TileFrame key='round3'>
+            <FirstCycleTile roomId={roomInfo.id} actionPublish={actionPublish} event={findEventWithRound(events, 3)} openRound={3} />
+          </B.TileFrame>
+          <B.TileFrame key='round6'>
+            {/* <DummyTile name={'급하지 않은 가족 늘리기'} src={'tile/slowFamilyMaking_t'} iconWidth={'120px'} iconHeight={'72px'} /> */}
+            <B.TileBack>라운드 6</B.TileBack>
+          </B.TileFrame>
+          <B.TileFrame key='round9'>
+            {/* <DummyTile name={'채소 종자'} src={'resource/vegetable'} iconWidth={'24px'} iconHeight={'24px'} /> */}
+            <B.TileBack>라운드 9</B.TileBack>
+            <B.HarvestIcon src='img/resource/harvest.svg' />
+          </B.TileFrame>
+          <B.TileFrame key='round11'>
+            {/* <DummyTile name={'소'} src={'animal/cow'} iconWidth={'24px'} iconHeight={'24px'} /> */}
+            <B.TileBack>라운드 11</B.TileBack>
+            <B.HarvestIcon src='img/resource/harvest.svg' />
+          </B.TileFrame>
+          <B.TileFrame key='round13'>
+            {/* <DummyTile name={'밭농사'} src={'tile/farming'} iconWidth={'120px'} iconHeight={'132px'} /> */}
+            <B.TileBack>라운드 13</B.TileBack>
+            <B.HarvestIcon src='img/resource/harvest.svg' />
+          </B.TileFrame>
           <B.TileFrame key='cardBtns'>
             <CardBtns />
             <button onClick={printReducerState}>디버깅</button>
@@ -125,19 +163,28 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
 
           {/* row3 */}
           <B.TileFrame key='train2_theater'>
-            <InitialActionTile actionName={'교습2'} actionType={'tile/teaching2'} iconWidth={'80px'} iconHeight={'54px'} />
+            {/* <DummyTile name={'교습2'} src={'tile/teaching2'} iconWidth={'80px'} iconHeight={'54px'} /> */}
+            <PlaceTile roomId={roomInfo.id} tileImgSrc={'tile/teaching2'} iconWidth={'80px'} iconHeight={'54px'} actionPublish={actionPublish} event={findEventWithId(events, 29)} />
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/food'} actionPublish={actionPublish} event={findEventWithId(events, 30)} quantity={'1'} />
           </B.TileFrame>
           <B.TileFrame key='work_train1'>
-            <InitialActionTile actionName={'교습1'} actionType={'tile/teaching1'} iconWidth={'80px'} iconHeight={'54px'} />
+            {/* <DummyTile name={'교습1'} src={'tile/teaching1'} iconWidth={'80px'} iconHeight={'54px'} /> */}
+            <PlaceTile roomId={roomInfo.id} tileImgSrc={'tile/teaching1'} iconWidth={'80px'} iconHeight={'54px'} actionPublish={actionPublish} event={findEventWithId(events, 4)} />
             <BasicTile roomId={roomInfo.id} tileImgSrc={'resource/food'} actionPublish={actionPublish} event={findEventWithId(events, 6)} quantity={'+2'} />
           </B.TileFrame>
           <B.TileFrame key='reed_fishing'>
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/reed'} actionPublish={actionPublish} event={findEventWithId(events, 9)} quantity={'1'} />
             <StackTile roomId={roomInfo.id} tileImgSrc={'resource/food'} actionPublish={actionPublish} event={findEventWithId(events, 10)} quantity={'1'} />
           </B.TileFrame>
-          <B.TileFrame key='round4'>22</B.TileFrame>
-          <B.TileFrame key='round7'>23</B.TileFrame>
+          <B.TileFrame key='round4'>
+            <FirstCycleTile roomId={roomInfo.id} actionPublish={actionPublish} event={findEventWithRound(events, 4)} openRound={4} />
+            <B.HarvestIcon src='img/resource/harvest.svg' />
+          </B.TileFrame>
+          <B.TileFrame key='round7'>
+            {/* <DummyTile name={'서부 채석장'} src={'resource/stone'} iconWidth={'24px'} iconHeight={'24px'} /> */}
+            <B.TileBack>라운드 7</B.TileBack>
+            <B.HarvestIcon src='img/resource/harvest.svg' />
+          </B.TileFrame>
 
           {/* playerBoard */}
           <B.TileFrame key='playerBoard'>

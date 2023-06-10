@@ -211,10 +211,10 @@ export const Name = styled.h2`
   font-size: 20px;
   height: 30px;
   text-align: center;
-  margin: 0 auto; 
-`
+  margin: 0 auto;
+`;
 export const ItemSet = styled.div`
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   margin: 10px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -226,21 +226,18 @@ export const ItemSet = styled.div`
   border-radius: 5px;
   border: 1px solid black;
   align-items: center;
-  
-`
+`;
 export const Item = styled.div`
   height: 30px;
   display: flex;
   align-items: center;
-  img{
+  img {
     margin-right: 5px;
     height: 20px;
   }
-  & >
-  
-`
+`;
 export const ExchangeItems = styled.div`
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   margin: 10px;
   margin-bottom: 5px;
   display: grid;
@@ -253,39 +250,39 @@ export const ExchangeItems = styled.div`
   border-radius: 5px;
   border: 1px solid black;
   align-items: center;
-`
+`;
 export const ExchageItem = styled.div`
   margin: 10px;
   height: 35px;
   display: flex;
   align-items: center;
-  img{
+  img {
     height: 30px;
     margin: 2.5px;
   }
-  a{
+  a {
     margin: 2.5px;
   }
-`
+`;
 export const HaveFood = styled.div`
-  height: 50px; 
+  height: 50px;
   display: flex;
   align-items: center;
-  img{
+  img {
     height: 30px;
     margin: 2.5px;
   }
-  a{
+  a {
     margin: 2.5px;
   }
-`
+`;
 export const BtDiv = styled.div`
   float: right;
   margin-right: 10px;
-  button{
+  button {
     height: 25px;
   }
-`
+`;
 //FoodSelectionModal
 export const FSScreen = styled.div`
   display: flex;
@@ -294,11 +291,11 @@ export const FSScreen = styled.div`
   width: 500px;
   height: 100px;
   background-color: #eeebeb;
-  button{
+  button {
     display: flex;
     align-items: center;
     font-size: 18px;
-    img{
+    img {
       height: 18px;
     }
   }

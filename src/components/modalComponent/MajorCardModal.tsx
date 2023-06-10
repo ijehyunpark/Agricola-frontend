@@ -1,22 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { UnselectableMajorCard } from '../cardComponent/MajorCard';
 import * as M from './ModalComponent';
-import * as B from '../boardComponent/BoardComponent';
+import * as C from '../cardComponent/CardComponent';
+import { MajorAttr } from './../../interface/interfaces';
 
 function MajorCardModal() {
+  const cards = useSelector((state: RootState) => state.card);
   return (
     <M.Modal modalType='majorCardModal'>
-      <M.CardModalGrid n={5}>
-        <B.Card>major1</B.Card>
-        <B.Card>major2</B.Card>
-        <B.Card>major3</B.Card>
-        <B.Card>major4</B.Card>
-        <B.Card>major5</B.Card>
-        <B.Card>major6</B.Card>
-        <B.Card>major7</B.Card>
-        <B.Card>major8</B.Card>
-        <B.Card>major9</B.Card>
-        <B.Card>major10</B.Card>
-      </M.CardModalGrid>
+      <C.CardGrid n={5}>
+        {cards.majorDict.map((card: MajorAttr, i) => (
+          <UnselectableMajorCard name={card.name} ingredients={card.ingredients} bonusPoint={card.bonusPoint} description={card.description} key={i} />
+        ))}
+      </C.CardGrid>
     </M.Modal>
   );
 }

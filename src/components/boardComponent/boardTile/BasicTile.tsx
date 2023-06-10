@@ -4,7 +4,12 @@ import { RootState } from '../../../redux/store';
 import * as B from '../BoardComponent';
 
 function BasicTile({ roomId, tileImgSrc, iconWidth, iconHeight, actionPublish, event, quantity }: TileProps) {
+  const playerId = useSelector((state: RootState) => state.player.myInfo.id);
+  const currentTurnId = useSelector((state: RootState) => state.gameState.playerId);
   const getResource = () => {
+    if (playerId !== currentTurnId) {
+      return;
+    }
     const message = {
       eventId: event?.id,
       acts: [

@@ -6,6 +6,7 @@ const initialState: ModalState = {
   roomMakeModal: false,
   waitingModal: false,
   majorCardModal: false,
+  occupationCardModal: false,
   myCardModal: false,
   equipmentModal: false,
   gameStatusModal: false,
