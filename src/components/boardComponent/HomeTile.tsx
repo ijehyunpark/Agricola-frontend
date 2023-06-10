@@ -97,7 +97,7 @@ export function HomeBtn({ onClick }: HomeBtnProps) {
 }
 
 export function HomeArea() {
-  const [btnColor, setBtnColor] = useState('white');
+  const [btnColor, setBtnColor] = useState('transparent');
 
   const handleBtnClick = () => {
     //setBtnColor('black');
@@ -115,9 +115,9 @@ export function HomeArea() {
 
   return (
     <B.HomeTile>
-      <B.HomeBtnWrapper>
+      {/* <B.HomeBtnWrapper>
         <HomeBtn onClick={checkBtnClick}></HomeBtn>
-      </B.HomeBtnWrapper>
+      </B.HomeBtnWrapper> */}
 
       <B.FenceContentWrapper>
         <FenceBtnRow color={btnColor} onClick={handleBtnClick} ID={1}></FenceBtnRow>

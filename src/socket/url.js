@@ -1,3 +1,3 @@
-const URL = '20.196.235.218:8080';
+const URL = '20.196.238.16:8080';
 
 export default URL;

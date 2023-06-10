@@ -263,8 +263,9 @@ export const HomeBtn = styled.button`
   width: 50px;
   height: 20px;
   font-size: ${(props) => props.theme.fontSize.base};
-  border-color: transparent;
-  border-radius: 7px;
+  border-color: none;
+  border-radius: 5px;
+  background-color: none;
 `;
 
 export const JobBtnWrapper = styled.div`
@@ -273,7 +274,7 @@ export const JobBtnWrapper = styled.div`
   height: 120px;
   justify-content: space-between;
   overflow-x: auto;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.tileBg};
   padding: 0 5px;
   border-radius: 7px;
 
@@ -305,8 +306,8 @@ export const FenceBtnColumn = styled.button`
   height: 80px;
   font-size: ${(props) => props.theme.fontSize.base};
   border-color: transparent;
-  border-radius: 7px;
-  background-color: ${(props) => props.color};
+  border-radius: 5px;
+  background-color: none;
 `;
 
 export const FenceBtnRow = styled.button`
@@ -314,19 +315,17 @@ export const FenceBtnRow = styled.button`
   height: 10px;
   font-size: ${(props) => props.theme.fontSize.base};
   border-color: transparent;
-  border-radius: 7px;
-  background-color: ${(props) => props.color};
+  border-radius: 5px;
+  background-color: none;
 `;
 
 export const FenceContentWrapper = styled.div`
   position: relative;
   top: 10px;
   width: max-content;
-  width: max-content;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: white;
   justify-content: flex-start;
   gap: 20px;
   border-radius: 7px;

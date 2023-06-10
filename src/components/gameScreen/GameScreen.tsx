@@ -158,7 +158,6 @@ function GameScreen({ startGamePublish, actionPublish, exchangePublish }: GameSc
           </B.TileFrame>
           <B.TileFrame key='cardBtns'>
             <CardBtns />
-            <button onClick={printReducerState}>디버깅</button>
           </B.TileFrame>
 
           {/* row3 */}

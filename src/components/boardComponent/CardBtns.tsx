@@ -18,7 +18,6 @@ function CardBtns() {
     <BtnAlingColumn>
       <B.CardBtn onClick={() => dispatch(openModal('majorCardModal'))}>주요 설비</B.CardBtn>
       <B.CardBtn onClick={() => dispatch(openModal('myCardModal'))}>나의 카드</B.CardBtn>
-      <B.CardBtn onClick={() => dispatch(openModal('resourceExchangeModal'))}>변환소</B.CardBtn>
     </BtnAlingColumn>
   );
 }
